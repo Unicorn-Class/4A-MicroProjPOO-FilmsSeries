@@ -8,6 +8,7 @@ public class UniflixApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UniflixApplication.class, args);
+		System.out.println("Hello");
 	}
 
 }
