@@ -1,23 +1,25 @@
 package fr.unicornteam.uniflix;
 
 import java.sql.Time;
-import java.sql.Date;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
 
 public abstract class Media {
     String title;
     Date release;
-    List<String> scenarist;
-    List<String> actor;
-    List<String> type;
+    ArrayList<String>  scenarist;
+    ArrayList<String> actor;
+    ArrayList<String> type;
     Time duration;
-    List<String> director;
-    List<String> distributor;
-    List<String> extract;
-    List<String> language;
-    List<Media> universe;
-    List<Media> collection;
-    List<Media> group;
+    ArrayList<String> director;
+    ArrayList<String> distributor;
+    ArrayList<String> extract;
+    ArrayList<String> language;
+    ArrayList<Media> universe;
+    ArrayList<Media> collection;
+    ArrayList<Media> group;
+    String origin_country;
+    String overview;
 
     //WARNING toRemove
     float averageScore;
