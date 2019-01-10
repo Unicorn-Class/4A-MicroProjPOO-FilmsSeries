@@ -1,8 +1,9 @@
-package fr.unicornteam.uniflix;
+package fr.unicornteam.uniflix.model;
 
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public abstract class Media {
     String title;
@@ -36,7 +37,7 @@ public abstract class Media {
         return scenarist;
     }
 
-    public void setScenarist(List<String> scenarist) {
+    public void setScenarist(ArrayList<String> scenarist) {
         this.scenarist = scenarist;
     }
 
@@ -61,7 +62,7 @@ public abstract class Media {
         return actor;
     }
 
-    public void setActor(List<String> actor) {
+    public void setActor(ArrayList<String> actor) {
         this.actor = actor;
     }
 
@@ -69,7 +70,7 @@ public abstract class Media {
         return type;
     }
 
-    public void setType(List<String> type) {
+    public void setType(ArrayList<String> type) {
         this.type = type;
     }
 
@@ -85,7 +86,7 @@ public abstract class Media {
         return director;
     }
 
-    public void setDirector(List<String> director) {
+    public void setDirector(ArrayList<String> director) {
         this.director = director;
     }
 
@@ -93,7 +94,7 @@ public abstract class Media {
         return distributor;
     }
 
-    public void setDistributor(List<String> distributor) {
+    public void setDistributor(ArrayList<String> distributor) {
         this.distributor = distributor;
     }
 
@@ -101,7 +102,7 @@ public abstract class Media {
         return extract;
     }
 
-    public void setExtract(List<String> extract) {
+    public void setExtract(ArrayList<String> extract) {
         this.extract = extract;
     }
 
@@ -109,7 +110,7 @@ public abstract class Media {
         return language;
     }
 
-    public void setLanguage(List<String> language) {
+    public void setLanguage(ArrayList<String> language) {
         this.language = language;
     }
 
@@ -117,7 +118,7 @@ public abstract class Media {
         return universe;
     }
 
-    public void setUniverse(List<Media> universe) {
+    public void setUniverse(ArrayList<Media> universe) {
         this.universe = universe;
     }
 
@@ -125,7 +126,7 @@ public abstract class Media {
         return collection;
     }
 
-    public void setCollection(List<Media> collection) {
+    public void setCollection(ArrayList<Media> collection) {
         this.collection = collection;
     }
 
@@ -133,9 +134,16 @@ public abstract class Media {
         return group;
     }
 
-    public void setGroup(List<Media> group) {
+    public void setGroup(ArrayList<Media> group) {
         this.group = group;
     }
 
-
+    @Override
+    public String toString() {
+        return "Media{" +
+                "title='" + title + '\'' +
+                ", actor=" + actor +
+                ", type=" + type +
+                '}';
+    }
 }

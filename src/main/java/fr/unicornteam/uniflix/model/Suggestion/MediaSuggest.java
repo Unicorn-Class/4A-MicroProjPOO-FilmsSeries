@@ -1,8 +1,8 @@
-package fr.unicornteam.uniflix.Suggestion;
+package fr.unicornteam.uniflix.model.Suggestion;
 
-import fr.unicornteam.uniflix.Media;
+import fr.unicornteam.uniflix.model.Media;
 
-public class MediaSuggest implements Comparable<MediaSuggest>{
+class MediaSuggest implements Comparable<MediaSuggest>{
     private Media media;
     private int score = 0;
     public static final int COLLECTION = 999999;

@@ -1,4 +1,4 @@
-package fr.unicornteam.uniflix;
+package fr.unicornteam.uniflix.model;
 
 public enum State {
     Stopped,

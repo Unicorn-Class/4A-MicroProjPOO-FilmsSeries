@@ -1,6 +1,6 @@
-package fr.unicornteam.uniflix.Suggestion;
+package fr.unicornteam.uniflix.model.Suggestion;
 
-import fr.unicornteam.uniflix.Media;
+import fr.unicornteam.uniflix.model.Media;
 
 public class NbCommon {
 
