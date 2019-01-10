@@ -43,7 +43,7 @@ public class Serie extends Media {
         for (int i =0;i<res2.getJSONArray("created_by").length();i++){
             this.scenarist.add(res2.getJSONArray("created_by").getJSONObject(i).getString("name"));
         }
-        this.type=new ArrayList<String>();
+        setType(new ArrayList<String>());
         for (int i =0;i<res2.getJSONArray("genres").length();i++){
             this.type.add(res2.getJSONArray("genres").getJSONObject(i).getString("name"));
         }
@@ -88,8 +88,8 @@ public class Serie extends Media {
                 ", title='" + title + '\'' +
                 ", release=" + release +
                 ", scenarist=" + scenarist +
-                ", actor=" + actor +
-                ", type=" + type +
+                ", actor=" + getActor() +
+                ", type=" + getType() +
                 ", duration=" + duration +
                 ", director=" + director +
                 ", distributor=" + distributor +

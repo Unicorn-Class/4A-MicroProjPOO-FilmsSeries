@@ -9,8 +9,8 @@ public class Film extends Media {
         this.id = id;
         this.title = title;
         this.scenarist = scenarist;
-        this.actor = actor;
-        this.type = type;
+        setActor(actor);
+        setType(type);
         this.director = director;
         this.language = language;
         this.universe = universe;

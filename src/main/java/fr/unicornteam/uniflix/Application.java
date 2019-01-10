@@ -22,7 +22,7 @@ public class Application {
 
 		ArrayList<MediaSuggest> filmsLink = MediaSuggestion.getSuggestionMedia(allMedia.get(0), allMedia);
 
-		System.out.println("Films similaires a "+allMedia.get(0));
+		System.out.println("Films similaires a "+allMedia.get(0).getTitle());
 		for(MediaSuggest ms : filmsLink){
 			System.out.println(ms);
 		}

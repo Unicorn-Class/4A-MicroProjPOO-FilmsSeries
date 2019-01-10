@@ -17,7 +17,7 @@ public final class MediaSuggestion {
         ArrayList<MediaSuggest> listMedia = initListMedia(myMedia);
 
         for(Media m : allMedia){
-            if(criteria(myMedia, m)){
+            if(criteria(myMedia, m) && myMedia!=m){
                 listMedia.add(new MediaSuggest(m, calculScore(myMedia, m)));
             }
         }
@@ -28,6 +28,7 @@ public final class MediaSuggestion {
     private static int calculScore(Media myMedia, Media m) {
         int score = 0;
         //TODO add calculation of release date
+        //TODO add calculation of average score
         score += NbCommon.Category(myMedia, m)*COEFF_CATEGORY;
         score += NbCommon.Actor(myMedia, m)*COEFF_ACTOR;
         score += NbCommon.Director(myMedia, m)*COEFF_DIRECTOR;

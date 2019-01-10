@@ -5,12 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public abstract class Media {
+public abstract class Media extends ListForUserMedia {
     String title;
     Date release;
     ArrayList<String>  scenarist;
-    ArrayList<String> actor;
-    ArrayList<String> type;
     Time duration;
     ArrayList<String> director;
     ArrayList<String> distributor;
@@ -56,22 +54,6 @@ public abstract class Media {
 
     public void setRelease(Date release) {
         this.release = release;
-    }
-
-    public List<String> getActor() {
-        return actor;
-    }
-
-    public void setActor(ArrayList<String> actor) {
-        this.actor = actor;
-    }
-
-    public List<String> getType() {
-        return type;
-    }
-
-    public void setType(ArrayList<String> type) {
-        this.type = type;
     }
 
     public Time getDuration() {
@@ -142,8 +124,8 @@ public abstract class Media {
     public String toString() {
         return "Media{" +
                 "title='" + title + '\'' +
-                ", actor=" + actor +
-                ", type=" + type +
+                ", actor=" + getActor() +
+                ", type=" + getType() +
                 '}';
     }
 }
