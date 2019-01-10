@@ -2,7 +2,8 @@ package fr.unicornteam.uniflix.model.Suggestion;
 
 import fr.unicornteam.uniflix.model.Media;
 
-class MediaSuggest implements Comparable<MediaSuggest>{
+//TODO remove public and add sorting method in MediaSuggestion
+public class MediaSuggest implements Comparable<MediaSuggest>{
     private Media media;
     private int score = 0;
     public static final int COLLECTION = 999999;

@@ -12,7 +12,7 @@ public final class MediaSuggestion {
     private static final int COEFF_LANGUAGE = 1;
     private static final int COEFF_SCENARIST = 5;
 
-    public static final ArrayList<Media> getSuggestionMedia(Media myMedia, ArrayList<Media> allMedia){
+    public static final ArrayList<MediaSuggest> getSuggestionMedia(Media myMedia, ArrayList<Media> allMedia){
 
         ArrayList<MediaSuggest> listMedia = initListMedia(myMedia);
 
@@ -22,7 +22,7 @@ public final class MediaSuggestion {
             }
         }
 
-        return null;
+        return listMedia;
     }
 
     private static int calculScore(Media myMedia, Media m) {
