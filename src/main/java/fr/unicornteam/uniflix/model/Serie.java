@@ -16,6 +16,7 @@ import java.util.List;
 public class Serie extends Media {
     int id;
     String currentState;
+    int numberOfSeason;
     ArrayList<Season> seasonList;
     public Serie(String keyword) throws UnirestException, ParseException {
         this.seasonList=new ArrayList<Season>();
@@ -56,7 +57,13 @@ public class Serie extends Media {
             this.director.add(res2.getJSONArray("production_companies").getJSONObject(i).getString("name"));
         }
 
+        this.numberOfSeason=res2.getInt("number_of_seasons");
+        this.seasonList=new ArrayList<Season>();
+        for (int i =1;i<=this.numberOfSeason;i++){
+            Season s =new Season(this.id,i);
+            seasonList.add(s);
 
+        }
 
         /**Recupération des extraits**/
         HttpResponse<JsonNode> extract = Unirest.get("https://api.themoviedb.org/3/tv/"+this.id+"/videos?api_key="+key).asJson();
@@ -67,13 +74,16 @@ public class Serie extends Media {
             this.extract.add(res3.getJSONArray("results").getJSONObject(i).getString("key"));
         }
         //this.language= (String[]) res2.get("languages");
+
+
     }
 
     @Override
     public String toString() {
         return "Serie{" +
                 "id=" + id +
-                ", currentState=" + currentState +
+                ", currentState='" + currentState + '\'' +
+                ", numberOfSeason=" + numberOfSeason +
                 ", seasonList=" + seasonList +
                 ", title='" + title + '\'' +
                 ", release=" + release +
@@ -90,12 +100,10 @@ public class Serie extends Media {
                 ", group=" + group +
                 ", origin_country='" + origin_country + '\'' +
                 ", overview='" + overview + '\'' +
+                ", averageScore=" + averageScore +
                 '}';
     }
 
-   /*boolean AddSeason(Season){
-
-    }*/
 
     public static void main(String[] args) {
         try {
