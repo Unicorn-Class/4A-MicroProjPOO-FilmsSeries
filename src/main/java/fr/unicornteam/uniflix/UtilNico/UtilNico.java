@@ -3,6 +3,10 @@ package fr.unicornteam.uniflix.UtilNico;
 import fr.unicornteam.uniflix.model.Film;
 import fr.unicornteam.uniflix.model.Media;
 import fr.unicornteam.uniflix.model.MediaWatched;
+import fr.unicornteam.uniflix.model.Suggestion.MediaSuggest;
+import fr.unicornteam.uniflix.model.Suggestion.MediaSuggestion;
+import fr.unicornteam.uniflix.model.Suggestion.UserSuggest;
+import fr.unicornteam.uniflix.model.Suggestion.UserSuggestion;
 import fr.unicornteam.uniflix.model.User;
 
 import java.util.ArrayList;
@@ -184,5 +188,44 @@ public class UtilNico {
         allUser.add(u5);
 
         return allUser;
+    }
+
+
+
+
+
+    public static void test() {
+
+        System.out.println("===========");
+        System.out.println(" TEST NICO ");
+        System.out.println("===========");
+
+        ArrayList<Media> allMedia = UtilNico.initMovie();
+        ArrayList<User> allUser = UtilNico.initUser(allMedia);
+
+        ArrayList<MediaSuggest> filmsLink = MediaSuggestion.getSuggestionMedia(allMedia.get(0), allMedia);
+
+        System.out.println("\tFilms similaires a "+allMedia.get(0).getTitle());
+        for(MediaSuggest ms : filmsLink){
+            System.out.println("\t\t"+ms);
+        }
+
+        System.out.println("\n\n");
+
+        ArrayList<UserSuggest> userLink;
+
+        for(int i=0 ; i<allUser.size();i++){
+
+            userLink = UserSuggestion.getSuggestionUser(allUser.get(i), allUser);
+
+            System.out.println("\n\tUtilisateur similaires a "+allUser.get(i).getUsername());
+            for(UserSuggest us : userLink){
+                System.out.println("\t\t"+us);
+            }
+        }
+        System.out.println("===============");
+        System.out.println(" FIN TEST NICO ");
+        System.out.println("===============");
+
     }
 }

@@ -12,7 +12,7 @@ public class User extends ListForUserMedia {
     public User(String username, ArrayList<MediaWatched> mediaWatched, ArrayList<String> type) {
         this.username = username;
         this.mediaWatched = mediaWatched;
-        this.type = type;
+        setType(type);
     }
 
     public String getUsername() {

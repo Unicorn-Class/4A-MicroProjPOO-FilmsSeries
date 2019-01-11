@@ -30,8 +30,8 @@ public class Episode extends Media{
                 ", origin_country='" + origin_country + '\'' +
                 ", overview='" + overview + '\'' +
                 ", averageScore=" + averageScore +
-                ", type=" + type +
-                ", actor=" + actor +
+                ", type=" + getType() +
+                ", actor=" + getActor() +
                 '}';
     }
 
@@ -63,11 +63,11 @@ public class Episode extends Media{
         HttpResponse<JsonNode> res2 = Unirest.get("https://api.themoviedb.org/3/tv/"+tv_id+"/season/"+season_number+"/episode/"+episode_number+"/credits?api_key="+key).asJson();
         JSONArray cast=res2.getBody().getObject().getJSONArray("cast");
         System.out.println(cast);
-        this.actor=new ArrayList<String>();
+        setActor(new ArrayList<String>());
 
         for (int i =0;i<cast.length();i++){
             String member=cast.getJSONObject(i).getString("name");
-            actor.add(member);
+            addActor(member);
         }
 
         /**Recupération des extraits**/

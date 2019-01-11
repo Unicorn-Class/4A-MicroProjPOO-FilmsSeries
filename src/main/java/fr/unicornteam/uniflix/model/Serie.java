@@ -45,7 +45,7 @@ public class Serie extends Media {
         }
         setType(new ArrayList<String>());
         for (int i =0;i<res2.getJSONArray("genres").length();i++){
-            type.add(res2.getJSONArray("genres").getJSONObject(i).getString("name"));
+            addType(res2.getJSONArray("genres").getJSONObject(i).getString("name"));
         }
         this.currentState= res2.getString("status");
         this.distributor=new ArrayList<String>();

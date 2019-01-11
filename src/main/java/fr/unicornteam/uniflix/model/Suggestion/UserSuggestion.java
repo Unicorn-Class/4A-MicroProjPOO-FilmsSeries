@@ -19,16 +19,6 @@ public class UserSuggestion {
     private static final int LIMIT_TIME = 2;
 
 
-    //
-    //TODO
-    //
-    //  TODO    end calcul score
-    //  TODO    criteria
-    //
-    //TODO
-    //
-
-
     public static final ArrayList<UserSuggest> getSuggestionUser(User myUser, ArrayList<User> allUser){
 
         ArrayList<UserSuggest> listUser = new ArrayList<>();
