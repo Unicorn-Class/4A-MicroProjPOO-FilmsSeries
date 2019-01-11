@@ -1,6 +1,8 @@
 package fr.unicornteam.uniflix.model.Suggestion;
 
 import fr.unicornteam.uniflix.model.Media;
+import fr.unicornteam.uniflix.model.MediaWatched;
+import fr.unicornteam.uniflix.model.User;
 
 import java.util.*;
 import java.util.jar.JarFile;
@@ -13,6 +15,42 @@ public final class MediaSuggestion {
     private static final int COEFF_DIRECTOR = 5;
     private static final int COEFF_LANGUAGE = 1;
     private static final int COEFF_SCENARIST = 5;
+
+
+    private static final int COEFF_WATCHLIST = 3;
+    private static final int COEFF_WATCHED = 2;
+    private static final int LIMIT_LASTVIEW = 14;
+
+    public static final ArrayList<MediaSuggest> getSuggestionMedia(User myUser, ArrayList<Media> allMedia){
+
+        ArrayList<MediaSuggest> list = new ArrayList<>();
+
+        for(MediaWatched mw : myUser.getMediaWatched()){
+            for(MediaSuggest ms : getSuggestionMedia(mw.getMedia(),allMedia)){
+                if(!myUser.hadInWatched(ms.getMedia()) || (myUser.hadInWatched(ms.getMedia()) && myUser.lastView(ms.getMedia()) > LIMIT_LASTVIEW)) {
+                    list.add(new MediaSuggest(ms.getMedia(), ms.getScore() * COEFF_WATCHED));
+                }
+            }
+        }
+
+        for(Media mwl : myUser.getWatchList()){
+            for(MediaSuggest ms : getSuggestionMedia(mwl,allMedia)){
+                if(!myUser.hadInWatched(ms.getMedia()) || (myUser.hadInWatched(ms.getMedia()) && myUser.lastView(ms.getMedia()) > LIMIT_LASTVIEW)){
+                    list.add(new MediaSuggest(ms.getMedia(), ms.getScore()*COEFF_WATCHLIST));
+                }
+            }
+        }
+
+
+        Set<MediaSuggest> set = new HashSet<>(list);
+        list.clear();
+        list.addAll(set);
+
+
+        Collections.sort(list);
+        return list;
+
+    }
 
     public static final ArrayList<MediaSuggest> getSuggestionMedia(Media myMedia, ArrayList<Media> allMedia){
 

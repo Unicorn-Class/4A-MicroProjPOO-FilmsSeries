@@ -63,5 +63,24 @@ public class User extends ListForUserMedia {
         return list;
     }
 
+    public boolean hadInWatched(Media m){
+        for(MediaWatched mw : mediaWatched){
+            if (mw.getMedia().equals(m)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int lastView(Media m){
+        for(MediaWatched mw : mediaWatched) {
+            if (mw.getMedia().equals(m)) {
+                return mw.getLastView();
+            }
+        }
+        return 0;
+
+    }
+
 
 }
