@@ -2,7 +2,7 @@ package fr.unicornteam.uniflix.model.Suggestion;
 
 import fr.unicornteam.uniflix.model.User;
 
-class UserSuggest implements Comparable<UserSuggest>{
+public class UserSuggest implements Comparable<UserSuggest>{
     private User user;
     private int score = 0;
 

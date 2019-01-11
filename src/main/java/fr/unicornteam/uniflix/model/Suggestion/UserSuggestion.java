@@ -1,15 +1,22 @@
 package fr.unicornteam.uniflix.model.Suggestion;
 
 import fr.unicornteam.uniflix.model.Media;
+import fr.unicornteam.uniflix.model.MediaWatched;
 import fr.unicornteam.uniflix.model.User;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class UserSuggestion {
 
     private static final int COEFF_CATEGORY = 6;
     private static final int COEFF_ACTOR = 6;
-    private static final int COEFF_MOVIE = 5;
+    private static final int COEFF_MOVIE = 3;
+    private static final int COEFF_TIME = 4;
+    private static final int COEFF_SEEnSCORE = 8;
+    private static final int COEFF_WATCHLIST = 5;
+    private static final int LIMIT_MOVIE = 0;
+    private static final int LIMIT_TIME = 2;
 
 
     //
@@ -22,7 +29,7 @@ public class UserSuggestion {
     //
 
 
-    public static final ArrayList<UserSuggest> getSuggestionMedia(User myUser, ArrayList<User> allUser){
+    public static final ArrayList<UserSuggest> getSuggestionUser(User myUser, ArrayList<User> allUser){
 
         ArrayList<UserSuggest> listUser = new ArrayList<>();
 
@@ -32,6 +39,7 @@ public class UserSuggestion {
             }
         }
 
+        Collections.sort(listUser);
         return listUser;
     }
 
@@ -52,17 +60,43 @@ public class UserSuggestion {
             }
         }
 
-        score += (scoreMedia/nbMedia)*COEFF_MOVIE;
-/*
-        score += NbCommon.Director(myMedia, m)*COEFF_DIRECTOR;
-        score += NbCommon.Language(myMedia, m)*COEFF_LANGUAGE;
-        score += NbCommon.Scenarist(myMedia, m)*COEFF_SCENARIST;*/
+        if(nbMedia != 0) {
+            score += (scoreMedia / nbMedia) * COEFF_WATCHLIST;
+        }
+
+
+        scoreMedia = 0;
+        nbMedia = 0;
+
+            for(MediaWatched myUMW : myUser.getMediaWatched()){
+                for(MediaWatched uMW : u.getMediaWatched()){
+                    nbMedia++;
+                    if(myUMW.getScore()>uMW.getScore()-1){
+                        scoreMedia += uMW.getScore();
+                        if(myUMW.getTime()>LIMIT_TIME && uMW.getTime()>LIMIT_TIME){
+                            scoreMedia += min(myUMW.getTime(), uMW.getTime()) * COEFF_TIME;
+                        }
+                    }
+            }
+        }
+
+        if(nbMedia != 0) {
+            score += (scoreMedia / nbMedia) * COEFF_SEEnSCORE;
+        }
+
+        score += NbCommon.Movie(myUser, u) * COEFF_MOVIE;
         return score;
     }
 
+    private static int min(int time, int time1) {
+        if(time>time1){
+            return time;
+        }
+        return time1;
+    }
+
     private static boolean criteria(User myUser, User u) {
-       // return oneCommoCategory(myMedia, m);
-       return true;
+        return NbCommon.oneCommoCategory(myUser, u) || NbCommon.Movie(myUser, u) > LIMIT_MOVIE;
     }
 
 }

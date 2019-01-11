@@ -1,0 +1,93 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Uniflix - Settings</title>
+  <meta name="description" content="Uniflix">
+  <meta name="author" content="Unicorn.class">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+
+</head>
+
+<body>
+    <nav class="bg-blue">
+        <img src="img/logo.png" alt="Logo Uniflix" class="logo">
+        <div class="buttons">
+            <a href="app.html"><i class="material-icons">home</i></a>
+            <a href="discover.html"><i class="material-icons">explore</i></a>
+            <a href=""><i class="material-icons">history</i></a>
+        </div>
+
+        <div class="searchbar">
+            <i class="material-icons">search</i>
+            <form>
+                <input type="text" value="" placeholder="Minions">
+            </form>
+            <a href="search.html"><i class="material-icons">arrow_forward</i></a>
+        </div>
+
+
+        <div class="buttons user">
+            <a href="#" class="selected" onclick="userMenu()"><i class="material-icons">person</i></a>
+            <div class="user-menu">
+                <a href="">
+                    <i class="material-icons">playlist_play</i>
+                    <p>My list</p>
+                </a>
+                <a href="">
+                    <i class="material-icons">settings</i>
+                    <p>Settings</p>
+                </a>
+                <a class="last">
+                    <i class="material-icons">power_settings_new</i>
+                    <p>Logout</p>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="anotherNav">
+        <ul class="secondNav">
+            <li><a href="#general">General</a></li>
+            <li><a href="#customize">Customize</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+
+    <div class="main main-settings">
+        <h1 id="general">General</h1> 
+
+        <form>
+            <input type="text" placeholder="Username">
+            <input type="email" placeholder="Email">
+            <input type="submit" value="Save">
+        </form>
+
+        <h1 id="customize">Customize</h1> 
+
+        <h2>Favorite Categories</h2>
+        <form>
+            <select name="categories" multiple>
+                <option value="volvo">Comedy</option>
+                <option value="saab">Family</option>
+                <option value="opel">Action</option>
+                <option value="audi">Adventure</option>
+            </select>
+            <input type="submit" value="Save">
+        </form>
+
+        <h1 id="customize">Security</h1> 
+
+        <form>
+            <input type="password" placeholder="Current password">
+            <input type="password" placeholder="New password">
+            <input type="password" placeholder="Confirm">
+            <input type="submit" value="Save">
+        </form>
+    </div>
+</body>
+</html>

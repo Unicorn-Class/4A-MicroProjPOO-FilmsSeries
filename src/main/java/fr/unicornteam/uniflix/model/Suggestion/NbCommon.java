@@ -33,8 +33,32 @@ public class NbCommon {
         return common;
     }
 
+    public static boolean oneCommoCategory(ListForUserMedia myLFUM, ListForUserMedia m) {
+        for(String mType : m.getType()){
+            for(String myMType : myLFUM.getType()){
+                if(mType != null && mType.equals(myMType)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     //User
+
+
+    public static final int Movie(User myUser, User u) {
+        int common = 0;
+        for(Media uStr : u.getAllMedia()){
+            for(Media myUStr : myUser.getAllMedia()){
+                if(uStr != null && uStr.equals(myUStr)){
+                    common++;
+                }
+            }
+        }
+        return common;
+    }
 
 
     //Media

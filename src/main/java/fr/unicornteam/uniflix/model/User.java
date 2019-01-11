@@ -9,7 +9,11 @@ public class User extends ListForUserMedia {
     private ArrayList<Media> watchList = new ArrayList<>();
     private ArrayList<MediaWatched> mediaWatched = new ArrayList<>();
 
-
+    public User(String username, ArrayList<MediaWatched> mediaWatched, ArrayList<String> type) {
+        this.username = username;
+        this.mediaWatched = mediaWatched;
+        this.type = type;
+    }
 
     public String getUsername() {
         return username;
@@ -35,12 +39,18 @@ public class User extends ListForUserMedia {
         this.watchList = watchList;
     }
 
+    public void addWatchList(Media watchList) { this.watchList.add(watchList); }
+
     public ArrayList<MediaWatched> getMediaWatched() {
         return mediaWatched;
     }
 
     public void setMediaWatched(ArrayList<MediaWatched> mediaWatched) {
         this.mediaWatched = mediaWatched;
+    }
+
+    public void addMediaWatched(MediaWatched mediaWatched) {
+        this.mediaWatched.add(mediaWatched);
     }
 
 

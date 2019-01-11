@@ -15,6 +15,30 @@ public class Season extends Media {
     int id;
     ArrayList<Episode> episodeList;
 
+    @Override
+    public String toString() {
+        return "Season{" +
+                "id=" + id +
+                ", episodeList=" + episodeList +
+                ", title='" + title + '\'' +
+                ", release=" + release +
+                ", scenarist=" + scenarist +
+                ", duration=" + duration +
+                ", director=" + director +
+                ", distributor=" + distributor +
+                ", extract=" + extract +
+                ", language=" + language +
+                ", universe=" + universe +
+                ", collection=" + collection +
+                ", group=" + group +
+                ", origin_country='" + origin_country + '\'' +
+                ", overview='" + overview + '\'' +
+                ", averageScore=" + averageScore +
+                ", type=" + type +
+                ", actor=" + actor +
+                '}';
+    }
+
     public Season(int tv_id, int season_number) throws UnirestException,ParseException {
         /**Request to the API**/
         String key ="8600861f4787df9fb2f5752da938b459";
@@ -25,16 +49,23 @@ public class Season extends Media {
         this.release=new SimpleDateFormat("yyyy-MM-dd").parse(date);
         this.title=res.getString("name");
         this.overview=res.getString("overview");
-    }
 
-    @Override
-    public String toString() {
-        return "Season{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", release=" + release +
-                ", overview='" + overview + '\'' +
-                '}';
+        /**Recupération des extraits**/
+        HttpResponse<JsonNode> extract = Unirest.get("https://api.themoviedb.org/3/tv/"+tv_id+"/season/"+season_number+"/videos?api_key="+key).asJson();
+        JSONObject res3 =extract.getBody().getObject();
+        this.extract=new ArrayList<String>();
+
+        for (int i =0;i<res3.getJSONArray("results").length();i++){
+            this.extract.add(res3.getJSONArray("results").getJSONObject(i).getString("key"));
+        }
+
+        /**Data for episode**/
+        this.episodeList=new ArrayList<Episode>();
+        for (int i =1;i<=res.getJSONArray("episodes").length();i++){
+            Episode ep=new Episode(tv_id,season_number,i);
+            this.episodeList.add(ep);
+        }
+
     }
 
     public static void main(String[] args) {
