@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class ListForUserMedia {
 
-    private ArrayList<String> type = new ArrayList<>();
+    public ArrayList<String> type = new ArrayList<>();
     private ArrayList<String> actor = new ArrayList<>();
 
 

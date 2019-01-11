@@ -36,7 +36,7 @@ public class Film extends Media {
         //HttpResponse<JsonNode> response = Unirest.get("https://api.themoviedb.org/3/search/movie?api_key="+key+"=fr-fr&query="+keyMovie).asJson();
         HttpResponse<JsonNode> response = Unirest.get("https://api.themoviedb.org/3/search/movie?api_key="+key+"&language=en-US&query="+keyMovie).asJson();
         JSONArray rs =response.getBody().getObject().getJSONArray("results");
-
+        System.out.println(rs);
         this.id=rs.getJSONObject(0).getInt("id");
         this.title=rs.getJSONObject(0).getString("original_title");
         String date=rs.getJSONObject(0).getString("release_date");
@@ -46,7 +46,7 @@ public class Film extends Media {
 
         HttpResponse<JsonNode> additionnal = Unirest.get("https://api.themoviedb.org/3/movie/"+this.id+"?api_key="+key).asJson();
         JSONObject res2 =additionnal.getBody().getObject();
-        System.out.println(res2);
+        //System.out.println(res2);
 
         ArrayList<String> t=new ArrayList<String>();
         for (int i =0;i<res2.getJSONArray("genres").length();i++){
@@ -63,11 +63,12 @@ public class Film extends Media {
         JSONObject ens=ensemble.getBody().getObject();
 
         ArrayList<String> act=new ArrayList<String>();
-
-
-        for (int i =0;i<ens.getJSONArray("cast").length();i++){
-            act.add(res2.getJSONArray("cast").getJSONObject(i).getString("name"));
+        System.out.println(ens);
+        System.out.println(ens.getJSONArray("cast").getJSONObject(0).getString("name"));
+        for(int i=0;i<ens.getJSONArray("cast").length();i++){
+            act.add(ens.getJSONArray("cast").getJSONObject(i).getString("name"));
         }
+        
         this.setActor(act);
 
     }
