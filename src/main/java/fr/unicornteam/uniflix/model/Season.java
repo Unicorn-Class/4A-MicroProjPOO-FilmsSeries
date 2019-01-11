@@ -34,8 +34,8 @@ public class Season extends Media {
                 ", origin_country='" + origin_country + '\'' +
                 ", overview='" + overview + '\'' +
                 ", averageScore=" + averageScore +
-                ", type=" + type +
-                ", actor=" + actor +
+                ", type=" + getType() +
+                ", actor=" + getActor() +
                 '}';
     }
 

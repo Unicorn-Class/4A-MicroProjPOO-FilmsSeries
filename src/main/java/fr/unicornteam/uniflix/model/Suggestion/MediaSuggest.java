@@ -2,6 +2,8 @@ package fr.unicornteam.uniflix.model.Suggestion;
 
 import fr.unicornteam.uniflix.model.Media;
 
+import java.util.Objects;
+
 //TODO remove public and add sorting method in MediaSuggestion
 public class MediaSuggest implements Comparable<MediaSuggest>{
     private Media media;
@@ -24,6 +26,19 @@ public class MediaSuggest implements Comparable<MediaSuggest>{
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MediaSuggest that = (MediaSuggest) o;
+        return Objects.equals(media, that.media);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(media);
     }
 
     @Override

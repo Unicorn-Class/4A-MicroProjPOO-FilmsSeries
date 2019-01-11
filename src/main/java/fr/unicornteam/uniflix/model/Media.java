@@ -159,4 +159,22 @@ public abstract class Media extends ListForUserMedia {
                 ", type=" + getType() +
                 '}';
     }
+
+    public boolean hadInUniverse(Media m){
+        for(Media mU : universe){
+            if(mU.equals(m)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hadInCollection(Media m){
+        for(Media mC : collection){
+            if(mC.equals(m)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
