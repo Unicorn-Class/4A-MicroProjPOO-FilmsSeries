@@ -19,8 +19,8 @@ public class Serie extends Media {
     int numberOfSeason;
     ArrayList<Season> seasonList;
     public Serie(String keyword) throws UnirestException, ParseException {
+        keyword=keyword.replaceAll(" ","%20");
         this.seasonList=new ArrayList<Season>();
-
         /**Request to the API**/
         String key ="8600861f4787df9fb2f5752da938b459";
         HttpResponse<JsonNode> response = Unirest.get("https://api.themoviedb.org/3/search/tv?page=1&query="+keyword+"&api_key="+key).asJson();
@@ -63,6 +63,10 @@ public class Serie extends Media {
             Season s =new Season(this.id,i);
             seasonList.add(s);
 
+        }
+        this.distributor=new ArrayList<String>();
+        for (int i =0;i<res2.getJSONArray("production_companies").length();i++){
+            this.distributor.add(res2.getJSONArray("production_companies").getJSONObject(i).getString("name"));
         }
 
         /**Recupération des extraits**/
