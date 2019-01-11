@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.3/css/bootstrap.css">
+</head>
+<body>
+
+    <div th:include="nav :: navigation"></div>
+
+    <div class="container">
+
+        <p th:text="'Bonjour de test ' + ${nomTemplate} + ' !'"/>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/webjars/bootstrap/4.1.3/js/bootstrap.js"></script>
+</body>
+</html>
