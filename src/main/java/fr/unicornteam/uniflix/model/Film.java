@@ -7,11 +7,15 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+@Entity
 public class Film extends Media {
+    @Id
     int id;
 
     public Film(int id, String title, ArrayList<String> scenarist, ArrayList<String> actor, ArrayList<String> type, ArrayList<String> director, ArrayList<String> language, ArrayList<Media> universe, ArrayList<Media> collection) {
@@ -25,8 +29,6 @@ public class Film extends Media {
         this.universe = universe;
         this.collection = collection;
     }
-
-
 
 
     ArrayList<Film> listeMovie=new ArrayList<Film>();
