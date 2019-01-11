@@ -1,13 +1,15 @@
 package fr.unicornteam.uniflix.model;
 
 
- class MediaWatched {
+ public class MediaWatched {
     private Media media;
-    private int time;
+     private int time;
+     private int score;
 
-     public MediaWatched(Media media, int time) {
+     public MediaWatched(Media media, int time, int score) {
          this.media = media;
          this.time = time;
+         this.score = score;
      }
 
      public Media getMedia() {
@@ -24,5 +26,13 @@ package fr.unicornteam.uniflix.model;
 
      public void setTime(int time) {
          this.time = time;
+     }
+
+     public int getScore() {
+         return score;
+     }
+
+     public void setScore(int score) {
+         this.score = score;
      }
  }

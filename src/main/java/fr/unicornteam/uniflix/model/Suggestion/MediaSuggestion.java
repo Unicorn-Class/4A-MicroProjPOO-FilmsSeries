@@ -3,6 +3,7 @@ package fr.unicornteam.uniflix.model.Suggestion;
 import fr.unicornteam.uniflix.model.Media;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public final class MediaSuggestion {
 
@@ -21,7 +22,7 @@ public final class MediaSuggestion {
                 listMedia.add(new MediaSuggest(m, calculScore(myMedia, m)));
             }
         }
-
+        Collections.sort(listMedia);
         return listMedia;
     }
 
@@ -53,18 +54,7 @@ public final class MediaSuggestion {
     private static boolean criteria(Media myMedia, Media m) {
         //TODO add criteria release date
         return (m.getAverageScore()>myMedia.getAverageScore()-1)
-                && (oneCommoCategory(myMedia, m));
-    }
-
-    private static boolean oneCommoCategory(Media myMedia, Media m) {
-        for(String mType : m.getType()){
-            for(String myMType : myMedia.getType()){
-                if(mType != null && mType.equals(myMType)){
-                    return true;
-                }
-            }
-        }
-        return false;
+                && (NbCommon.oneCommoCategory(myMedia, m));
     }
 
 }

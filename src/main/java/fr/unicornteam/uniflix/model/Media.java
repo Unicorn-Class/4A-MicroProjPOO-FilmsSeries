@@ -8,7 +8,7 @@ import java.util.List;
 public abstract class Media extends ListForUserMedia {
     String title;
     Date release;
-    ArrayList<String>  scenarist;
+    ArrayList<String> scenarist;
     Time duration;
     ArrayList<String> director;
     ArrayList<String> distributor;
@@ -39,6 +39,9 @@ public abstract class Media extends ListForUserMedia {
         this.scenarist = scenarist;
     }
 
+    public void addScenarist(String scenarist) {
+        this.scenarist.add(scenarist);
+    }
 
     public String getTitle() {
         return title;
@@ -72,12 +75,20 @@ public abstract class Media extends ListForUserMedia {
         this.director = director;
     }
 
+    public void addDirector(String director) {
+        this.director.add(director);
+    }
+
     public List<String> getDistributor() {
         return distributor;
     }
 
     public void setDistributor(ArrayList<String> distributor) {
         this.distributor = distributor;
+    }
+
+    public void addDistributor(String distributor) {
+        this.distributor.add(distributor);
     }
 
     public List<String> getExtract() {
@@ -88,12 +99,20 @@ public abstract class Media extends ListForUserMedia {
         this.extract = extract;
     }
 
+    public void addExtract(String extract) {
+        this.extract.add(extract);
+    }
+
     public List<String> getLanguage() {
         return language;
     }
 
     public void setLanguage(ArrayList<String> language) {
         this.language = language;
+    }
+
+    public void addLanguage(String language) {
+        this.language.add(language);
     }
 
     public List<Media> getUniverse() {
@@ -104,6 +123,10 @@ public abstract class Media extends ListForUserMedia {
         this.universe = universe;
     }
 
+    public void addUniverse(Media universe) {
+        this.universe.add(universe);
+    }
+
     public List<Media> getCollection() {
         return collection;
     }
@@ -112,12 +135,20 @@ public abstract class Media extends ListForUserMedia {
         this.collection = collection;
     }
 
+    public void addCollection(Media collection) {
+        this.collection.add(collection);
+    }
+
     public List<Media> getGroup() {
         return group;
     }
 
     public void setGroup(ArrayList<Media> group) {
         this.group = group;
+    }
+
+    public void addGroup(Media group) {
+        this.group.add(group);
     }
 
     @Override
