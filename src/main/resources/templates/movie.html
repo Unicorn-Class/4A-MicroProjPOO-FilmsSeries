@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
 
@@ -60,7 +60,7 @@
         <div class="media">
             <div class="content">
                 <div class="description">
-                    <div class="title">Moi, Moche et Méchant</div>
+                    <div class="title"  th:text="${movie.getTitle()}">Moi, Moche et Méchant</div>
                     <div class="time-data">2010 - 1h35</div>
                     <div class="types">
                         <a href="">Famille</a>
