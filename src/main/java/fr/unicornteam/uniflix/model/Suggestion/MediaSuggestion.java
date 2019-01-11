@@ -16,7 +16,7 @@ public final class MediaSuggestion {
 
     public static final ArrayList<MediaSuggest> getSuggestionMedia(Media myMedia, ArrayList<Media> allMedia){
 
-        ArrayList<MediaSuggest> listMedia = new ArrayList<MediaSuggest>();//initListMedia(myMedia);
+        ArrayList<MediaSuggest> listMedia = new ArrayList<MediaSuggest>();
 
         for(Media m : allMedia){
             if(criteria(myMedia, m) && myMedia!=m){
@@ -24,14 +24,7 @@ public final class MediaSuggestion {
             }
         }
 
-      /*  Set<MediaSuggest> set = new HashSet<>(listMedia);
-        listMedia.clear();
-        listMedia.addAll(set);*/
         Collections.sort(listMedia);
-
-/*
-        ArrayList<MediaSuggest> deduped = listMedia.stream().distinct().collect(Collectors.toList());
-        Collections.sort(deduped);*/
 
         return listMedia;
     }
