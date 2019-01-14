@@ -162,23 +162,45 @@ public class UtilNico {
         ArrayList<User> allUser = new ArrayList<>();
 
         User u1 = new User("Elodie",
-                new ArrayList<MediaWatched>() {{add(new MediaWatched(allMedia.get(5),4, 5));add(new MediaWatched(allMedia.get(6), 5,4));}},
+                new ArrayList<MediaWatched>() {{add(new MediaWatched(allMedia.get(5),
+                        new ArrayList<Integer>() {{add(20);add(10);add(2);}},
+                        5));add(new MediaWatched(allMedia.get(6),
+                        new ArrayList<Integer>() {{add(40);add(30);add(20);add(10);}},
+                        4));}},
                 new ArrayList<String>() {{add("Comedie");add("Action");}});
 
         User u2 = new User("Axel",
-                new ArrayList<MediaWatched>() {{add(new MediaWatched(allMedia.get(7),3,4));add(new MediaWatched(allMedia.get(8), 5,5));}},
+                new ArrayList<MediaWatched>() {{add(new MediaWatched(allMedia.get(7),
+                        new ArrayList<Integer>() {{add(40);add(30);add(20);add(10);}}
+                        ,4));add(new MediaWatched(allMedia.get(8),
+                        new ArrayList<Integer>() {{add(40);add(30);add(20);add(10);}},
+                        5));}},
                 new ArrayList<String>() {{add("Comedie");add("SF");}});
 
         User u3 = new User("Senam",
-                new ArrayList<MediaWatched>() {{add(new MediaWatched(allMedia.get(9),3,5));add(new MediaWatched(allMedia.get(10), 2,5));}},
+                new ArrayList<MediaWatched>() {{add(new MediaWatched(allMedia.get(9),
+                        new ArrayList<Integer>() {{add(40);add(30);add(20);add(10);}},
+                        5));add(new MediaWatched(allMedia.get(10),
+                        new ArrayList<Integer>() {{add(40);add(10);}},
+                        5));}},
                 new ArrayList<String>() {{add("Comedie");add("SF");}});
 
         User u4 = new User("Victor",
-                new ArrayList<MediaWatched>() {{add(new MediaWatched(allMedia.get(11),1,2));add(new MediaWatched(allMedia.get(10), 1,3));}},
+                new ArrayList<MediaWatched>() {{add(new MediaWatched(allMedia.get(11),
+                        new ArrayList<Integer>() {{add(40);}},
+                        2));add(new MediaWatched(allMedia.get(10),
+                        new ArrayList<Integer>() {{add(30);}}
+                        ,3));}},
                 new ArrayList<String>() {{add("Action");add("Aventure");}});
 
         User u5 = new User("Nicolas",
-                new ArrayList<MediaWatched>() {{add(new MediaWatched(allMedia.get(0),2,5));add(new MediaWatched(allMedia.get(5), 4,5));add(new MediaWatched(allMedia.get(11), 1,1));}},
+                new ArrayList<MediaWatched>() {{add(new MediaWatched(allMedia.get(0),
+                        new ArrayList<Integer>() {{add(40);add(10);}},
+                        5));add(new MediaWatched(allMedia.get(5),
+                        new ArrayList<Integer>() {{add(140);add(130);add(210);add(110);}}
+                        ,5));add(new MediaWatched(allMedia.get(11),
+                        new ArrayList<Integer>() {{add(40);}}
+                        ,1));}},
                 new ArrayList<String>() {{add("Classic");add("Aventure");}});
 
         allUser.add(u1);
@@ -200,8 +222,33 @@ public class UtilNico {
         System.out.println(" TEST NICO ");
         System.out.println("===========");
 
+
         ArrayList<Media> allMedia = UtilNico.initMovie();
         ArrayList<User> allUser = UtilNico.initUser(allMedia);
+
+ //       testSuggestMediaFromMedia(allMedia);
+//        testSuggestUser(allUser);
+        testSuggestMediaFromUser(allUser.get(4), allMedia);
+
+
+        System.out.println("===============");
+        System.out.println(" FIN TEST NICO ");
+        System.out.println("===============");
+
+    }
+
+    private static void testSuggestMediaFromUser(User user, ArrayList<Media> allMedia) {
+
+        ArrayList<MediaSuggest> filmsLink = MediaSuggestion.getSuggestionMedia(user, allMedia);
+
+        System.out.println("\tFilms similaires pour "+user.getUsername());
+        for(MediaSuggest ms : filmsLink){
+            System.out.println("\t\t"+ms);
+        }
+
+    }
+
+    private static void testSuggestMediaFromMedia(ArrayList<Media> allMedia) {
 
         ArrayList<MediaSuggest> filmsLink = MediaSuggestion.getSuggestionMedia(allMedia.get(0), allMedia);
 
@@ -210,7 +257,10 @@ public class UtilNico {
             System.out.println("\t\t"+ms);
         }
 
-        System.out.println("\n\n");
+    }
+
+    private static void testSuggestUser(ArrayList<User> allUser) {
+
 
         ArrayList<UserSuggest> userLink;
 
@@ -223,9 +273,9 @@ public class UtilNico {
                 System.out.println("\t\t"+us);
             }
         }
-        System.out.println("===============");
-        System.out.println(" FIN TEST NICO ");
-        System.out.println("===============");
+
 
     }
+
+
 }

@@ -63,8 +63,8 @@ public class UserSuggestion {
                     nbMedia++;
                     if(myUMW.getScore()>uMW.getScore()-1){
                         scoreMedia += uMW.getScore();
-                        if(myUMW.getTime()>LIMIT_TIME && uMW.getTime()>LIMIT_TIME){
-                            scoreMedia += min(myUMW.getTime(), uMW.getTime()) * COEFF_TIME;
+                        if(myUMW.getNbView()>LIMIT_TIME && uMW.getNbView()>LIMIT_TIME){
+                            scoreMedia += min(myUMW.getNbView(), uMW.getNbView()) * COEFF_TIME;
                         }
                     }
             }
