@@ -1,5 +1,9 @@
 package fr.unicornteam.uniflix.model;
 
+import fr.unicornteam.uniflix.UtilNico.UtilNico;
+import fr.unicornteam.uniflix.model.Suggestion.MediaSuggest;
+import fr.unicornteam.uniflix.model.Suggestion.MediaSuggestion;
+
 import java.util.ArrayList;
 
 public class User extends CommonForUserMedia {
@@ -98,5 +102,34 @@ public class User extends CommonForUserMedia {
 
     }
 
+    public ArrayList<Media> getSuggestionMedia(int nb){
+        ArrayList<Media> list = new ArrayList<>();
+        ArrayList<MediaSuggest> mediasSuggest = MediaSuggestion.getSuggestionMedia(this, UtilNico.allMedia);
+
+        int limit = nb;
+        if(nb>mediasSuggest.size()){
+            limit = mediasSuggest.size();
+        }
+
+        for(int i=0 ; i<limit ; i++) {
+            list.add(mediasSuggest.get(i).getMedia());
+        }
+        return list;
+    }
+
+    public ArrayList<Media> getSuggestionMediaFromList(int nb){
+        ArrayList<Media> list = new ArrayList<>();
+        ArrayList<MediaSuggest> mediasSuggest = MediaSuggestion.getSuggestionMediaFromList(this);
+
+        int limit = nb;
+        if(nb>mediasSuggest.size()){
+            limit = mediasSuggest.size();
+        }
+
+        for(int i=0 ; i<limit ; i++) {
+            list.add(mediasSuggest.get(i).getMedia());
+        }
+        return list;
+    }
 
 }

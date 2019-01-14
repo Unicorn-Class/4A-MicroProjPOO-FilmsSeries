@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class UtilNico {
 
+    public static ArrayList<Media> allMedia = new ArrayList<>();
+
 
     public static int searchMedia(String title, ArrayList<Media> allMedia){
         if(title == null){
@@ -29,7 +31,7 @@ public class UtilNico {
 
     public static ArrayList<Media> initMovie() {
 
-        ArrayList<Media> allMedia = new ArrayList<>();
+        allMedia = new ArrayList<>();
 
         //		id	titre	scenarist	actor	type	director	language	universe	collection
 
@@ -244,6 +246,10 @@ public class UtilNico {
 
         System.out.println("\tFilms similaires pour "+user.getUsername());
         for(MediaSuggest ms : filmsLink){
+            System.out.println("\t\t"+ms);
+        }
+        System.out.println("\tFilms en liste pour "+user.getUsername());
+        for(MediaSuggest ms : MediaSuggestion.getSuggestionMediaFromList(user)){
             System.out.println("\t\t"+ms);
         }
 
