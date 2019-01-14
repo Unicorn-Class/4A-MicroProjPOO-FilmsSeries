@@ -1,0 +1,48 @@
+package fr.unicornteam.uniflix.model;
+
+import fr.unicornteam.uniflix.model.Suggestion.MediaSuggest;
+import fr.unicornteam.uniflix.model.Suggestion.MediaSuggestion;
+import fr.unicornteam.uniflix.model.Suggestion.UserSuggestion;
+
+import java.util.ArrayList;
+
+public abstract class CommonForUserMedia {
+
+    ArrayList<String> type = new ArrayList<>();
+    ArrayList<String> actor = new ArrayList<>();
+    MediaSuggestion mediaSuggestion = new MediaSuggestion();
+    UserSuggestion userSuggestion = new UserSuggestion();
+
+
+    public ArrayList<String> getType() {
+        return type;
+    }
+
+    public void setType(ArrayList<String> type) {
+        this.type = type;
+    }
+
+    public void addType(String type) {
+        this.type.add(type);
+    }
+
+    public ArrayList<String> getActor() {
+        return actor;
+    }
+
+    public void setActor(ArrayList<String> actor) {
+        this.actor = actor;
+    }
+
+    public void addActor(String actor) {
+        this.actor.add(actor);
+    }
+
+    public MediaSuggestion MediaSuggestion() {
+        return mediaSuggestion;
+    }
+
+    public UserSuggestion UserSuggestion() {
+        return userSuggestion;
+    }
+}

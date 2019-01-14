@@ -1,6 +1,6 @@
 package fr.unicornteam.uniflix.model.Suggestion;
 
-import fr.unicornteam.uniflix.model.ListForUserMedia;
+import fr.unicornteam.uniflix.model.CommonForUserMedia;
 import fr.unicornteam.uniflix.model.Media;
 import fr.unicornteam.uniflix.model.User;
 
@@ -9,7 +9,7 @@ public class NbCommon {
 
     //User & Media
 
-    public static final int Category(ListForUserMedia myLFUM, ListForUserMedia m) {
+    public static final int Category(CommonForUserMedia myLFUM, CommonForUserMedia m) {
         int common = 0;
         for(String mType : m.getType()){
             for(String myMType : myLFUM.getType()){
@@ -21,7 +21,7 @@ public class NbCommon {
         return common;
     }
 
-    public static final int Actor(ListForUserMedia myLFUM, ListForUserMedia m) {
+    public static final int Actor(CommonForUserMedia myLFUM, CommonForUserMedia m) {
         int common = 0;
         for(String mStr : m.getActor()){
             for(String myMStr : myLFUM.getActor()){
@@ -33,7 +33,7 @@ public class NbCommon {
         return common;
     }
 
-    public static boolean oneCommoCategory(ListForUserMedia myLFUM, ListForUserMedia m) {
+    public static boolean oneCommoCategory(CommonForUserMedia myLFUM, CommonForUserMedia m) {
         for(String mType : m.getType()){
             for(String myMType : myLFUM.getType()){
                 if(mType != null && mType.equals(myMType)){

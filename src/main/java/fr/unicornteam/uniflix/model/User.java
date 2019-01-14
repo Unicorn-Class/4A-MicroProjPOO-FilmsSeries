@@ -2,7 +2,7 @@ package fr.unicornteam.uniflix.model;
 
 import java.util.ArrayList;
 
-public class User extends ListForUserMedia {
+public class User extends CommonForUserMedia {
 
     private String username ="";
     private String email ="";
@@ -13,6 +13,13 @@ public class User extends ListForUserMedia {
         this.username = username;
         this.mediaWatched = mediaWatched;
         setType(type);
+    }
+
+    public User(String username, ArrayList<MediaWatched> mediaWatched, ArrayList<String> type, ArrayList<Media> watchList) {
+        this.username = username;
+        this.mediaWatched = mediaWatched;
+        setType(type);
+        this.watchList = watchList;
     }
 
     public String getUsername() {
@@ -66,6 +73,15 @@ public class User extends ListForUserMedia {
     public boolean hadInWatched(Media m){
         for(MediaWatched mw : mediaWatched){
             if (mw.getMedia().equals(m)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hadInWatchList(Media m){
+        for(Media mw : watchList){
+            if (mw.equals(m)){
                 return true;
             }
         }

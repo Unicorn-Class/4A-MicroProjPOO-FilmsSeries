@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public abstract class Media extends ListForUserMedia {
+public abstract class Media extends CommonForUserMedia {
     String title;
     Date release;
     ArrayList<String> scenarist;

@@ -3,10 +3,9 @@ package fr.unicornteam.uniflix.model.Suggestion;
 import fr.unicornteam.uniflix.model.Media;
 import fr.unicornteam.uniflix.model.MediaWatched;
 import fr.unicornteam.uniflix.model.User;
+import fr.unicornteam.uniflix.model.Suggestion.MediaSuggest;
 
 import java.util.*;
-import java.util.jar.JarFile;
-import java.util.stream.Collectors;
 
 public final class MediaSuggestion {
 
@@ -16,10 +15,16 @@ public final class MediaSuggestion {
     private static final int COEFF_LANGUAGE = 1;
     private static final int COEFF_SCENARIST = 5;
 
-
     private static final int COEFF_WATCHLIST = 3;
     private static final int COEFF_WATCHED = 2;
-    private static final int LIMIT_LASTVIEW = 14;
+    private static final int LIMIT_LASTVIEW = 8;
+
+    private static  final int COEFF_SCORE = 2;
+    private static  final int COEFF_LASTVIEW = 5;
+    private static  final int COEFF_NBVIEW = 3;
+    private static  final int COEFF_AVGSCORE = 1;
+
+
 
     public static final ArrayList<MediaSuggest> getSuggestionMedia(User myUser, ArrayList<Media> allMedia){
 
@@ -27,7 +32,7 @@ public final class MediaSuggestion {
 
         for(MediaWatched mw : myUser.getMediaWatched()){
             for(MediaSuggest ms : getSuggestionMedia(mw.getMedia(),allMedia)){
-                if(!myUser.hadInWatched(ms.getMedia()) || (myUser.hadInWatched(ms.getMedia()) && myUser.lastView(ms.getMedia()) > LIMIT_LASTVIEW)) {
+                if(!myUser.hadInWatchList(ms.getMedia()) && !myUser.hadInWatched(ms.getMedia()) ) {
                     list.add(new MediaSuggest(ms.getMedia(), ms.getScore() * COEFF_WATCHED));
                 }
             }
@@ -35,7 +40,7 @@ public final class MediaSuggestion {
 
         for(Media mwl : myUser.getWatchList()){
             for(MediaSuggest ms : getSuggestionMedia(mwl,allMedia)){
-                if(!myUser.hadInWatched(ms.getMedia()) || (myUser.hadInWatched(ms.getMedia()) && myUser.lastView(ms.getMedia()) > LIMIT_LASTVIEW)){
+                if(!myUser.hadInWatchList(ms.getMedia()) && !myUser.hadInWatched(ms.getMedia()) ){
                     list.add(new MediaSuggest(ms.getMedia(), ms.getScore()*COEFF_WATCHLIST));
                 }
             }
@@ -51,6 +56,34 @@ public final class MediaSuggestion {
         return list;
 
     }
+
+    public static final ArrayList<MediaSuggest> getSuggestionMediaFromWatchList(User myUser, ArrayList<Media> allMedia){
+
+        ArrayList<MediaSuggest> list = new ArrayList<>();
+
+        for(MediaWatched mw: myUser.getMediaWatched()){
+            if(myUser.lastView(mw.getMedia()) > LIMIT_LASTVIEW) {
+                list.add(new MediaSuggest(mw.getMedia(), calculScore(mw)));
+            }
+        }
+
+
+        ArrayList<MediaSuggest> listWL = getSuggestionMedia(myUser, myUser.getWatchList());
+
+        for(MediaSuggest ms : listWL){
+            list.add(ms);
+        }
+
+        Set<MediaSuggest> set = new HashSet<>(list);
+        list.clear();
+        list.addAll(set);
+
+
+        Collections.sort(list);
+        return list;
+
+    }
+
 
     public static final ArrayList<MediaSuggest> getSuggestionMedia(Media myMedia, ArrayList<Media> allMedia){
 
@@ -79,6 +112,23 @@ public final class MediaSuggestion {
         return score;
     }
 
+    private static int calculScore(MediaWatched mw) {
+        int score = 0;
+        score += mw.getScore()*COEFF_SCORE;
+        score += mw.getLastView()*COEFF_LASTVIEW;
+        score -= mw.getNbView()*COEFF_NBVIEW;
+        score += mw.getMedia().getAverageScore()*COEFF_AVGSCORE;
+
+        return score;
+    }
+
+
+    //TODO delete ?
+    private static int calculScore(Media mwl) {
+        int score = 0;
+        score += mwl.getAverageScore();
+        return score;
+    }
 
     private static ArrayList<MediaSuggest> initListMedia(Media myMedia) {
 
