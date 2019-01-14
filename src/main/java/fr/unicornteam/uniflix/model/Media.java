@@ -7,6 +7,7 @@ import java.util.List;
 
 public abstract class Media extends CommonForUserMedia {
     String title;
+    String img;
     Date release;
     ArrayList<String> scenarist;
     Time duration;

@@ -82,6 +82,8 @@ public class Film extends Media {
 
         this.setType(t);
         this.origin_country=res2.getJSONArray("production_countries").getJSONObject(0).getString("name");
+        this.averageScore=(float)res2.getDouble("vote_average");
+        this.img="https://image.tmdb.org/t/p/w1280"+res2.getString("backdrop_path");
 
 
         HttpResponse<JsonNode> ensemble=Unirest.get("https://api.themoviedb.org/3/movie/"+this.id+"/credits?api_key="+key).asJson();
@@ -111,12 +113,20 @@ public class Film extends Media {
         for (int i =0;i<res2.getJSONArray("production_companies").length();i++){
             this.distributor.add(res2.getJSONArray("production_companies").getJSONObject(i).getString("name"));
         }
+        /**Recupération des extraits**/
+            HttpResponse<JsonNode> extract = Unirest.get("https://api.themoviedb.org/3/movie/" + this.id + "/videos?api_key=" + key).asJson();
+            JSONObject res3 = extract.getBody().getObject();
+            this.extract = new ArrayList<String>();
+
+            for (int i = 0; i < res3.getJSONArray("results").length(); i++) {
+                this.extract.add(res3.getJSONArray("results").getJSONObject(i).getString("key"));
+            }
     }
 
 
     public static void main(String[] args) {
         try {
-            Film s=new Film("Le seigneur des anneaux");
+            Film s=new Film("Moi moche et méchant");
             System.out.println(s);
         } catch (UnirestException e) {
             e.printStackTrace();
