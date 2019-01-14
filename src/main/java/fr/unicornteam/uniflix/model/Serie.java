@@ -18,6 +18,36 @@ public class Serie extends Media {
     String currentState;
     int numberOfSeason;
     ArrayList<Season> seasonList;
+
+    @Override
+    public String toString() {
+        return "Serie{" +
+                "id=" + id +
+                ", currentState='" + currentState + '\'' +
+                ", numberOfSeason=" + numberOfSeason +
+                ", seasonList=" + seasonList +
+                ", title='" + title + '\'' +
+                ", img='" + img + '\'' +
+                ", release=" + release +
+                ", scenarist=" + scenarist +
+                ", duration=" + duration +
+                ", director=" + director +
+                ", distributor=" + distributor +
+                ", extract=" + extract +
+                ", language=" + language +
+                ", universe=" + universe +
+                ", collection=" + collection +
+                ", group=" + group +
+                ", origin_country='" + origin_country + '\'' +
+                ", overview='" + overview + '\'' +
+                ", averageScore=" + averageScore +
+                ", type=" + type +
+                ", actor=" + actor +
+                ", mediaSuggestion=" + mediaSuggestion +
+                ", userSuggestion=" + userSuggestion +
+                '}';
+    }
+
     public Serie(String keyword) throws UnirestException, ParseException {
         keyword=keyword.replaceAll(" ","%20");
         this.seasonList=new ArrayList<Season>();
@@ -68,6 +98,8 @@ public class Serie extends Media {
         for (int i =0;i<res2.getJSONArray("production_companies").length();i++){
             this.distributor.add(res2.getJSONArray("production_companies").getJSONObject(i).getString("name"));
         }
+        this.averageScore=(float)res2.getDouble("vote_average");
+        this.img="https://image.tmdb.org/t/p/w1280"+res2.getString("backdrop_path");
 
         /**Recupération des extraits**/
         HttpResponse<JsonNode> extract = Unirest.get("https://api.themoviedb.org/3/tv/"+this.id+"/videos?api_key="+key).asJson();
@@ -80,32 +112,6 @@ public class Serie extends Media {
         //this.language= (String[]) res2.get("languages");
 
 
-    }
-
-    @Override
-    public String toString() {
-        return "Serie{" +
-                "id=" + id +
-                ", currentState='" + currentState + '\'' +
-                ", numberOfSeason=" + numberOfSeason +
-                ", seasonList=" + seasonList +
-                ", title='" + title + '\'' +
-                ", release=" + release +
-                ", scenarist=" + scenarist +
-                ", actor=" + getActor() +
-                ", type=" + getType() +
-                ", duration=" + duration +
-                ", director=" + director +
-                ", distributor=" + distributor +
-                ", extract=" + extract +
-                ", language=" + language +
-                ", universe=" + universe +
-                ", collection=" + collection +
-                ", group=" + group +
-                ", origin_country='" + origin_country + '\'' +
-                ", overview='" + overview + '\'' +
-                ", averageScore=" + averageScore +
-                '}';
     }
 
 

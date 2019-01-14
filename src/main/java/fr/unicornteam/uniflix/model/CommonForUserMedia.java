@@ -10,9 +10,6 @@ public abstract class CommonForUserMedia {
 
     ArrayList<String> type = new ArrayList<>();
     ArrayList<String> actor = new ArrayList<>();
-    MediaSuggestion mediaSuggestion = new MediaSuggestion();
-    UserSuggestion userSuggestion = new UserSuggestion();
-
 
     public ArrayList<String> getType() {
         return type;
@@ -38,11 +35,7 @@ public abstract class CommonForUserMedia {
         this.actor.add(actor);
     }
 
-    public MediaSuggestion MediaSuggestion() {
-        return mediaSuggestion;
-    }
 
-    public UserSuggestion UserSuggestion() {
-        return userSuggestion;
-    }
+    public abstract ArrayList<Media> getSuggestionMedia(int nb);
+    public abstract ArrayList<Media> getSuggestionMediaFromList(int nb);
 }

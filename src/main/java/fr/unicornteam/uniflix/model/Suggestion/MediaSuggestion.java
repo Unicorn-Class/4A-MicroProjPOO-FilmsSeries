@@ -57,7 +57,7 @@ public final class MediaSuggestion {
 
     }
 
-    public static final ArrayList<MediaSuggest> getSuggestionMediaFromWatchList(User myUser, ArrayList<Media> allMedia){
+    public static final ArrayList<MediaSuggest> getSuggestionMediaFromList(User myUser){
 
         ArrayList<MediaSuggest> list = new ArrayList<>();
 
