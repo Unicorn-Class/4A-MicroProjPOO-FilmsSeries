@@ -204,4 +204,17 @@ public abstract class Media extends CommonForUserMedia {
         }
         return list;
     }
+
+    public ArrayList<Media> ucMedia(){
+        ArrayList<Media> listeCU=new ArrayList<Media>();
+
+        listeCU.addAll(getCollection());
+        listeCU.addAll(getUniverse());
+        return listeCU;
+    }
+
+    public static ArrayList<Media> allMedia(){
+        
+        return null;
+    }
 }
