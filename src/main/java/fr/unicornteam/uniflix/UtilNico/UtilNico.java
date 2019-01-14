@@ -201,7 +201,8 @@ public class UtilNico {
                         ,5));add(new MediaWatched(allMedia.get(11),
                         new ArrayList<Integer>() {{add(40);}}
                         ,1));}},
-                new ArrayList<String>() {{add("Classic");add("Aventure");}});
+                new ArrayList<String>() {{add("Classic");add("Aventure");}},
+                new ArrayList<Media>(){{add(allMedia.get(1));add(allMedia.get(2));}});
 
         allUser.add(u1);
         allUser.add(u2);
