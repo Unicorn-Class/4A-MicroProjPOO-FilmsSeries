@@ -25,7 +25,7 @@
         <div class="searchbar">
             <i class="material-icons">search</i>
             <form>
-                <input type="text" value="Minions">
+                <input type="text">
             </form>
             <a href=""><i class="material-icons">arrow_forward</i></a>
         </div>
@@ -61,16 +61,13 @@
             <div class="content">
                 <div class="description">
                     <div class="title"  th:text="${movie.getTitle()}">Moi, Moche et Méchant</div>
-                    <div class="time-data">2010 - 1h35</div>
-                    <div class="types">
-                        <a href="">Famille</a>
-                        <a href="">Comédie</a>
-                        <a href="">Animation</a>
-                        <a href="">Jeunesse</a>
+                    <div class="time-data" th:text="${movie.getRelease()}+' - '+${movie.getDuration()}">2010 - 1h35</div>
+                    <div class="types" th:each="type: ${movie.getType()}">
+                        <a href="/search?type=" th:href="'search?type=' +${type()}" th:text="${type}">Famille</a>
                     </div>
                 </div>
 
-                <div class="synopsis">
+                <div class="synopsis" th:text="${movie.getOverview()}">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet diam dolor, ac sagittis lectus vehicula id. Aenean fringilla dolor a elit porta gravida vitae vel magna. Sed molestie dictum dolor, in ultrices quam venenatis eget. Maecenas accumsan vitae diam sed euismod. Curabitur id urna quis sapien eleifend maximus. Suspendisse viverra tortor augue. Sed eget hendrerit nisi. Morbi in elit sed neque placerat sollicitudin.
 
                     Nullam mattis ligula sit amet dui semper imperdiet. Vestibulum elementum pulvinar felis. In erat erat, congue in lacus vel, feugiat porttitor leo. Suspendisse lectus leo, porttitor et erat vitae, lobortis rutrum est. Suspendisse potenti. Donec nec pharetra tellus. Quisque consectetur volutpat aliquam. Sed nec interdum enim. Vivamus rhoncus nibh eu odio varius sodales. Etiam elementum sagittis nunc vel semper. Nullam commodo venenatis magna, a blandit ex condimentum nec. Nam elit velit, interdum in purus sagittis, interdum dignissim nunc. Suspendisse quis vestibulum diam. Vestibulum in consequat turpis, non blandit lorem. Donec sed elementum dui.
@@ -84,42 +81,10 @@
 
                 <h2>In the same universe</h2>
 
-                <div class="suggested">    
+                <div class="suggested" th:each="film: ${movie.getUniverse()}">
                     <a href="#" class="movieCard">
                         <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
+                        <div class="caption" th:text="${movie.getTitle()}">Coucou</div>
                     </a>
                 </div>
 

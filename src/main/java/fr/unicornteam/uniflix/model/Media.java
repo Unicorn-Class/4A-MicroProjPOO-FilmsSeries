@@ -20,6 +20,11 @@ public abstract class Media extends ListForUserMedia {
     String origin_country;
     String overview;
 
+    public String getOverview() {
+        return overview;
+    }
+
+
     //WARNING toRemove
     float averageScore;
 
