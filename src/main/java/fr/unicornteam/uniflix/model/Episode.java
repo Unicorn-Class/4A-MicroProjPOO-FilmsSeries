@@ -19,9 +19,12 @@ public class Episode extends Media{
         return "Episode{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", img='" + img + '\'' +
                 ", release=" + release +
                 ", scenarist=" + scenarist +
+                ", duration=" + duration +
                 ", director=" + director +
+                ", distributor=" + distributor +
                 ", extract=" + extract +
                 ", language=" + language +
                 ", universe=" + universe +
@@ -30,8 +33,10 @@ public class Episode extends Media{
                 ", origin_country='" + origin_country + '\'' +
                 ", overview='" + overview + '\'' +
                 ", averageScore=" + averageScore +
-                ", type=" + getType() +
-                ", actor=" + getActor() +
+                ", type=" + type +
+                ", actor=" + actor +
+                ", mediaSuggestion=" + mediaSuggestion +
+                ", userSuggestion=" + userSuggestion +
                 '}';
     }
 
@@ -59,10 +64,11 @@ public class Episode extends Media{
                 this.scenarist.add(member);
             }
         }
+
+        this.averageScore=(float)res.getDouble("vote_average");
         /**Get the cast**/
         HttpResponse<JsonNode> res2 = Unirest.get("https://api.themoviedb.org/3/tv/"+tv_id+"/season/"+season_number+"/episode/"+episode_number+"/credits?api_key="+key).asJson();
         JSONArray cast=res2.getBody().getObject().getJSONArray("cast");
-        System.out.println(cast);
         setActor(new ArrayList<String>());
 
         for (int i =0;i<cast.length();i++){
@@ -70,7 +76,9 @@ public class Episode extends Media{
             addActor(member);
         }
 
+
         /**Recupération des extraits**/
+
         HttpResponse<JsonNode> extract = Unirest.get("https://api.themoviedb.org/3/tv/"+tv_id+"/season/"+season_number+"/episode/"+episode_number+"/videos?api_key="+key).asJson();
         JSONObject res3 =extract.getBody().getObject();
         this.extract=new ArrayList<String>();
@@ -78,6 +86,7 @@ public class Episode extends Media{
         for (int i =0;i<res3.getJSONArray("results").length();i++){
             this.extract.add(res3.getJSONArray("results").getJSONObject(i).getString("key"));
         }
+
     }
 
 
