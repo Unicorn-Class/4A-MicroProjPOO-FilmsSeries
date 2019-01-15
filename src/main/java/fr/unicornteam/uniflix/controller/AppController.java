@@ -10,4 +10,9 @@ public class AppController {
     public String app() {
         return "app";
     }
+
+    @GetMapping("/")
+    public String index() {
+        return "app";
+    }
 }
