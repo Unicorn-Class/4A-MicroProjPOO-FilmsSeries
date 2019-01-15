@@ -49,7 +49,6 @@ public class Movie extends Media {
         this.universe = universe;
         this.collection = collection;
         this.averageScore = avg;
-        this.img = url;
     }
     public Movie(int id, String title, ArrayList<String> scenarist, ArrayList<String> actor, ArrayList<String> type, ArrayList<String> director, ArrayList<String> language, ArrayList<Media> universe, ArrayList<Media> collection, double avg, String url, String video) {
         this.id = id;
@@ -63,7 +62,7 @@ public class Movie extends Media {
         this.collection = collection;
         this.averageScore = avg;
         this.img = url;
-        this.overview = video;
+        this.addExtract(video);
     }
 
 

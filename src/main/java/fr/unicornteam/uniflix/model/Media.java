@@ -22,7 +22,7 @@ public abstract class Media extends CommonForUserMedia {
     Time duration;
     ArrayList<String> director;
     ArrayList<String> distributor;
-    ArrayList<String> extract;
+    ArrayList<String> extract = new ArrayList<>();
     ArrayList<String> language;
     ArrayList<Media> universe;
     ArrayList<Media> collection;
