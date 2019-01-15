@@ -65,7 +65,7 @@ public class UtilNico {
 
 
         Util.allMovie = InsertNico.initMovie();
-        ArrayList<User> allUser = InsertNico.initUser(Util.allMedia());
+//        ArrayList<User> allUser = InsertNico.initUser(Util.allMedia());
 
  //       testSuggestMediaFromMedia(allMedia);
 //        testSuggestUser(allUser);
