@@ -1,8 +1,8 @@
 package fr.unicornteam.uniflix.UtilNico;
 
-import fr.unicornteam.uniflix.model.Film;
 import fr.unicornteam.uniflix.model.Media;
 import fr.unicornteam.uniflix.model.MediaWatched;
+import fr.unicornteam.uniflix.model.Movie;
 import fr.unicornteam.uniflix.model.User;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class InsertNico {
 
         //		id	titre	scenarist	actor	type	director	language	universe	collection
 
-        Media film1 = new Film(1, "Retour vers le futur",
+        Media film1 = new Movie(1, "Retour vers le futur",
                 new ArrayList<String>() {{add("Robert Zemeckis");add("Bob Gale");}},
                 new ArrayList<String>() {{add("Michael J. Fox");add("Christopher Lloyd");add("Lea Thompson");add("Crispin Glover");add("Thomas F. Wilson");}},
                 new ArrayList<String>() {{add("SF");add("Classic");}},
@@ -26,7 +26,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 4.7);
-        Media film2 = new Film(2, "Retour vers le futur II",
+        Media film2 = new Movie(2, "Retour vers le futur II",
                 new ArrayList<String>() {{add("Robert Zemeckis");add("Bob Gale");}},
                 new ArrayList<String>() {{add("Michael J. Fox");add("Christopher Lloyd");add("Thomas F. Wilson");add("Lea Thompson");}},
                 new ArrayList<String>() {{add("SF");add("Classic");}},
@@ -36,7 +36,7 @@ public class InsertNico {
                 new ArrayList<Media>() {{add(film1);}},
                 4.4);
         film1.addCollection(film2);
-        Media film3 = new Film(3, "Retour vers le futur III",
+        Media film3 = new Movie(3, "Retour vers le futur III",
                 new ArrayList<String>() {{add("Bob Gale");}},
                 new ArrayList<String>() {{add("Elisabeth Shue");add("Michael J. Fox");add("Christopher Lloyd");add("Mary Steenburgen");add("Thomas F. Wilson");}},
                 new ArrayList<String>() {{add("SF");add("Classic");}},
@@ -47,7 +47,7 @@ public class InsertNico {
                 4.1);
         film1.addCollection(film3);
         film2.addCollection(film3);
-        Media film4 = new Film(4, "Harry Potter : l'ecole des sorciers",
+        Media film4 = new Movie(4, "Harry Potter : l'ecole des sorciers",
                 new ArrayList<String>() {{add("Steven Kloves");}},
                 new ArrayList<String>() {{add("Daniel Radcliffe");add("Rupert Grint");add("Emma Watson");add("Robbie Coltrane");add("Richard Harris");add("Ian Hart");add("Maggie Smith");add("Alan Rickman");}},
                 new ArrayList<String>() {{add("SF");add("Aventure");}},
@@ -56,7 +56,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 2.7);
-        Media film5 = new Film(5, "Wallace et Gromit : Le Mystère du lapin-garou",
+        Media film5 = new Movie(5, "Wallace et Gromit : Le Mystère du lapin-garou",
                 new ArrayList<String>() {{add("Nick Park");add("Steve Box");}},
                 new ArrayList<String>() {{add("Peter Sallis");}},
                 new ArrayList<String>() {{add("Classic");add("Anime");add("Comedie");}},
@@ -66,7 +66,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 3.8);
 
-        Media film6 = new Film(6, "Deadpool",
+        Media film6 = new Movie(6, "Deadpool",
                 new ArrayList<String>() {{add("Rhett Reese");add("Paul Wernick");}},
                 new ArrayList<String>() {{add("Ryan Reynolds");add("Morena Baccarin");add("Ed Skrein");add("T. J. Miller");add("Gina Carano");}},
                 new ArrayList<String>() {{add("Classic");add("SH");add("SF");add("Action");}},
@@ -75,7 +75,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 5);
-        Media film7 = new Film(7, "Sherlock Holmes",
+        Media film7 = new Movie(7, "Sherlock Holmes",
                 new ArrayList<String>() {{add("Guy Ritchie");add("Michael Robert Johnson");}},
                 new ArrayList<String>() {{add("Robert Downey Jr.");add("Jude Law");add("Rachel McAdams");add("Mark Strong");add("Kelly Reilly");}},
                 new ArrayList<String>() {{add("Aventure");add("Action");}},
@@ -84,7 +84,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 3.1);
-        Media film8 = new Film(8, "High School Musical",
+        Media film8 = new Movie(8, "High School Musical",
                 new ArrayList<String>() {{add("Peter Barsocchini");}},
                 new ArrayList<String>() {{add("Zac Efron");add("Vanessa Hudgens");
                     add("Ashley Tisdale");add("Lucas Grabeel");add("Monique Coleman");}},
@@ -94,7 +94,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 2.1);
-        Media film9 = new Film(9, "Hunger Games",
+        Media film9 = new Movie(9, "Hunger Games",
                 new ArrayList<String>() {{add("Gary Ross");add("Suzanne Collins");add("Billy Ray");}},
                 new ArrayList<String>() {{add("Jennifer Lawrence");add("Josh Hutcherson");
                     add("Liam Hemsworth");add("Woody Harrelson");add("Stanley Tucci");}},
@@ -104,7 +104,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 2.8);
-        Media film10 = new Film(10, "Bohemian Rhapsody",
+        Media film10 = new Movie(10, "Bohemian Rhapsody",
                 new ArrayList<String>() {{add("Anthony McCarten");}},
                 new ArrayList<String>() {{add("Rami Malek");add("Ben Hardy");
                     add("Joseph Mazzello");add("Gwilym Lee");}},
@@ -114,7 +114,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 3.4);
-        Media film11 = new Film(11, "Black Panter",
+        Media film11 = new Movie(11, "Black Panter",
                 new ArrayList<String>() {{add("Joe Robert Cole");add("Ryan Coogler");}},
                 new ArrayList<String>() {{add("Chadwick Boseman");add("Lupita Nyong'o");
                     add("Danai Gurira");add("Martin Freeman");add("Michael B. Jordan");}},
@@ -127,7 +127,7 @@ public class InsertNico {
 
         //		id	titre	scenarist	actor	type	director	language	universe	collection
 
-        Media film12 = new Film(12, "Pirates des Caraïbes : La Malédiction du Black Pearl",
+        Media film12 = new Movie(12, "Pirates des Caraïbes : La Malédiction du Black Pearl",
                 new ArrayList<String>() {{add("Terry Rossio");add(" \tTed Elliott");}},
                 new ArrayList<String>() {{add("Johnny Depp");add("Orlando Bloom");
                     add("Keira Knightley");add("Geoffrey Rush");}},
