@@ -4,6 +4,7 @@ import fr.unicornteam.uniflix.UtilNico.UtilNico;
 import fr.unicornteam.uniflix.model.Media;
 import fr.unicornteam.uniflix.model.MediaWatched;
 import fr.unicornteam.uniflix.model.User;
+import fr.unicornteam.uniflix.model.Util;
 
 import java.util.*;
 
@@ -35,7 +36,7 @@ public final class MediaSuggestion {
         ArrayList<MediaSuggest> listSugg = new ArrayList<>();
 
         //Why not add released date
-        for(Media m : UtilNico.allMedia){
+        for(Media m : Util.allMedia){
             if(m.getAverageScore()>LIMIT_SCORE){
                 listSugg.add(new MediaSuggest(m, calculScoreWithRandom(m)));
             }

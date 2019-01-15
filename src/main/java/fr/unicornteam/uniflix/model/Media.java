@@ -220,7 +220,7 @@ public abstract class Media extends CommonForUserMedia {
 
     public ArrayList<Media> getSuggestionMedia(int nb){
         ArrayList<Media> list = new ArrayList<>();
-        ArrayList<MediaSuggest> mediasSuggest = MediaSuggestion.getSuggestionMedia(this, UtilNico.allMedia);
+        ArrayList<MediaSuggest> mediasSuggest = MediaSuggestion.getSuggestionMedia(this, Util.allMedia);
 
         int limit = nb;
         if(nb>mediasSuggest.size()){

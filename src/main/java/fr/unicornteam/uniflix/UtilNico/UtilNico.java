@@ -1,13 +1,10 @@
 package fr.unicornteam.uniflix.UtilNico;
 
-import fr.unicornteam.uniflix.model.Movie;
-import fr.unicornteam.uniflix.model.Media;
-import fr.unicornteam.uniflix.model.MediaWatched;
+import fr.unicornteam.uniflix.model.*;
 import fr.unicornteam.uniflix.model.Suggestion.MediaSuggest;
 import fr.unicornteam.uniflix.model.Suggestion.MediaSuggestion;
 import fr.unicornteam.uniflix.model.Suggestion.UserSuggest;
 import fr.unicornteam.uniflix.model.Suggestion.UserSuggestion;
-import fr.unicornteam.uniflix.model.User;
 import javafx.scene.input.DataFormat;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
@@ -20,7 +17,7 @@ import java.util.Locale;
 
 public class UtilNico {
 
-    public static ArrayList<Media> allMedia = new ArrayList<>();
+  //  public static ArrayList<Media> allMedia = new ArrayList<>();
 
 
     public static int searchMedia(String title, ArrayList<Media> allMedia){
@@ -67,8 +64,8 @@ public class UtilNico {
         System.out.println("===========");
 
 
-        ArrayList<Media> allMedia = InsertNico.initMovie();
-        ArrayList<User> allUser = InsertNico.initUser(allMedia);
+        Util.allMedia = InsertNico.initMovie();
+        ArrayList<User> allUser = InsertNico.initUser(Util.allMedia());
 
  //       testSuggestMediaFromMedia(allMedia);
 //        testSuggestUser(allUser);
