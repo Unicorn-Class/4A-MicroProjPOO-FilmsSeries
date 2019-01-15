@@ -33,14 +33,14 @@ public abstract class Media extends CommonForUserMedia {
     }
 
 
-    //WARNING toRemove
-    float averageScore;
+    //TODO WARNING toRemove
+    double averageScore;
 
-    public float getAverageScore() {
+    public double getAverageScore() {
         return averageScore;
     }
 
-    public void setAverageScore(float averageScore) {
+    public void setAverageScore(double averageScore) {
         this.averageScore = averageScore;
     }
 
@@ -226,10 +226,6 @@ public abstract class Media extends CommonForUserMedia {
             list.add(mediasSuggest.get(i).getMedia());
         }
         return list;
-    }
-
-    public ArrayList<Media> getSuggestionMediaFromList(int nb){
-        return null;
     }
 
 

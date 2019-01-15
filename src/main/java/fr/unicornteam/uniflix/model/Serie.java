@@ -127,11 +127,6 @@ public class Serie extends Media {
 
     }
 
-    @Override
-    public ArrayList<Media> getSuggestionMediaFromList(int nb) {
-        return null;
-    }
-
     public int getId() {
         return id;
     }

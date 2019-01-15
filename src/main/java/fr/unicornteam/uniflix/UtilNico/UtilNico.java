@@ -50,7 +50,8 @@ public class UtilNico {
                 new ArrayList<String>() {{add("Robert Zemeckis");add("Steven Spielberg");}},
                 new ArrayList<String>() {{add("fr");add("en");add("es");}},
                 new ArrayList<>(),
-                new ArrayList<Media>() {{add(film1);}});
+                new ArrayList<Media>() {{add(film1);}},
+                4.4);
         film1.addCollection(film2);
         Media film3 = new Movie(3, "Retour vers le futur III",
                 new ArrayList<String>() {{add("Bob Gale");}},
@@ -59,7 +60,8 @@ public class UtilNico {
                 new ArrayList<String>() {{add("Robert Zemeckis");add("Steven Spielberg");}},
                 new ArrayList<String>() {{add("fr");add("en");}},
                 new ArrayList<>(),
-                new ArrayList<Media>() {{add(film1);add(film2);}});
+                new ArrayList<Media>() {{add(film1);add(film2);}},
+                4.1);
         film1.addCollection(film3);
         film2.addCollection(film3);
         Media film4 = new Movie(4, "Harry Potter : l'ecole des sorciers",
@@ -70,14 +72,15 @@ public class UtilNico {
                 new ArrayList<String>() {{add("fr");add("en");}},
                 new ArrayList<>(),
                 new ArrayList<>());
-        Media film5 = new Movie(5, "Wallace et Gromit : Le Mystère du lapin-garou",
+        Media film5 = new Film(5, "Wallace et Gromit : Le Mystère du lapin-garou",
                 new ArrayList<String>() {{add("Nick Park");add("Steve Box");}},
                 new ArrayList<String>() {{add("Peter Sallis");}},
                 new ArrayList<String>() {{add("Classic");add("Anime");add("Comedie");}},
                 new ArrayList<String>() {{add("Nick Park");add("Steve Box");}},
                 new ArrayList<String>() {{add("en");}},
                 new ArrayList<>(),
-                new ArrayList<>());
+                new ArrayList<>(),
+                3.8);
 
         Media film6 = new Movie(6, "Deadpool",
                 new ArrayList<String>() {{add("Rhett Reese");add("Paul Wernick");}},
@@ -87,7 +90,7 @@ public class UtilNico {
                 new ArrayList<String>() {{add("en");add("fr");}},
                 new ArrayList<>(),
                 new ArrayList<>());
-        Media film7 = new Movie(7, "Sherlock Holmes",
+        Media film7 = new Film(7, "Sherlock Holmes",
                 new ArrayList<String>() {{add("Guy Ritchie");add("Michael Robert Johnson");}},
                 new ArrayList<String>() {{add("Robert Downey Jr.");add("Jude Law");add("Rachel McAdams");add("Mark Strong");add("Kelly Reilly");}},
                 new ArrayList<String>() {{add("Aventure");add("Action");}},
@@ -95,7 +98,7 @@ public class UtilNico {
                 new ArrayList<String>() {{add("en");add("fr");}},
                 new ArrayList<>(),
                 new ArrayList<>());
-        Media film8 = new Movie(8, "High School Musical",
+        Media film8 = new Film(8, "High School Musical",
                 new ArrayList<String>() {{add("Peter Barsocchini");}},
                 new ArrayList<String>() {{add("Zac Efron");add("Vanessa Hudgens");
                     add("Ashley Tisdale");add("Lucas Grabeel");add("Monique Coleman");}},
@@ -104,7 +107,7 @@ public class UtilNico {
                 new ArrayList<String>() {{add("en");add("fr");}},
                 new ArrayList<>(),
                 new ArrayList<>());
-        Media film9 = new Movie(9, "Hunger Games",
+        Media film9 = new Film(9, "Hunger Games",
                 new ArrayList<String>() {{add("Gary Ross");add("Suzanne Collins");add("Billy Ray");}},
                 new ArrayList<String>() {{add("Jennifer Lawrence");add("Josh Hutcherson");
                     add("Liam Hemsworth");add("Woody Harrelson");add("Stanley Tucci");}},
@@ -113,7 +116,7 @@ public class UtilNico {
                 new ArrayList<String>() {{add("en");add("fr");}},
                 new ArrayList<>(),
                 new ArrayList<>());
-        Media film10 = new Movie(10, "Bohemian Rhapsody",
+        Media film10 = new Film(10, "Bohemian Rhapsody",
                 new ArrayList<String>() {{add("Anthony McCarten");}},
                 new ArrayList<String>() {{add("Rami Malek");add("Ben Hardy");
                     add("Joseph Mazzello");add("Gwilym Lee");}},
@@ -122,7 +125,7 @@ public class UtilNico {
                 new ArrayList<String>() {{add("en");add("fr");}},
                 new ArrayList<>(),
                 new ArrayList<>());
-        Media film11 = new Movie(11, "Black Panter",
+        Media film11 = new Film(11, "Black Panter",
                 new ArrayList<String>() {{add("Joe Robert Cole");add("Ryan Coogler");}},
                 new ArrayList<String>() {{add("Chadwick Boseman");add("Lupita Nyong'o");
                     add("Danai Gurira");add("Martin Freeman");add("Michael B. Jordan");}},
@@ -130,7 +133,8 @@ public class UtilNico {
                 new ArrayList<String>() {{add("Ryan Coogler");}},
                 new ArrayList<String>() {{add("en");add("fr");}},
                 new ArrayList<>(),
-                new ArrayList<>());
+                new ArrayList<>(),
+                2.1);
 
         //		id	titre	scenarist	actor	type	director	language	universe	collection
 
@@ -142,7 +146,8 @@ public class UtilNico {
                 new ArrayList<String>() {{add("Gore Verbinski");}},
                 new ArrayList<String>() {{add("en");add("fr");}},
                 new ArrayList<>(),
-                new ArrayList<>());
+                new ArrayList<>(),
+                2.0);
 
         allMedia.add(film1);
         allMedia.add(film2);
@@ -231,12 +236,23 @@ public class UtilNico {
 
  //       testSuggestMediaFromMedia(allMedia);
 //        testSuggestUser(allUser);
-        testSuggestMediaFromUser(allUser.get(4), allMedia);
+//        testSuggestMediaFromUser(allUser.get(4), allMedia);
+        testSuggestHome();
 
 
         System.out.println("===============");
         System.out.println(" FIN TEST NICO ");
         System.out.println("===============");
+
+    }
+
+    private static void testSuggestHome() {
+        for(int i = 0 ; i<5 ; i++) {
+            System.out.println("\tFilms proposé #" + i);
+            for (Media m : MediaSuggestion.getSuggestion(5)) {
+                System.out.println("\t\t" + m.getTitle());
+            }
+        }
 
     }
 
@@ -251,6 +267,14 @@ public class UtilNico {
         System.out.println("\tFilms en liste pour "+user.getUsername());
         for(MediaSuggest ms : MediaSuggestion.getSuggestionMediaFromList(user)){
             System.out.println("\t\t"+ms);
+        }
+        System.out.println("\t[CLASSIC VERSION] Films en lien avec "+allMedia.get(5));
+        for(Media m : allMedia.get(5).getSuggestionMedia(5)){
+            System.out.println("\t\t"+m.getTitle());
+        }
+        System.out.println("\t[NEW VERSION] Films en lien avec "+allMedia.get(5));
+        for(Media m : allMedia.get(5).getSuggestionMedia(5)){
+            System.out.println("\t\t"+m.getTitle());
         }
 
     }
