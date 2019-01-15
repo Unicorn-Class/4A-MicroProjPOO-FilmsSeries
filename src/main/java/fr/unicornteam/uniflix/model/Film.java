@@ -18,6 +18,22 @@ public class Film extends Media {
     @Id
     int id;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ArrayList<Film> getListeMovie() {
+        return listeMovie;
+    }
+
+    public void setListeMovie(ArrayList<Film> listeMovie) {
+        this.listeMovie = listeMovie;
+    }
+
     public Film(int id, String title, ArrayList<String> scenarist, ArrayList<String> actor, ArrayList<String> type, ArrayList<String> director, ArrayList<String> language, ArrayList<Media> universe, ArrayList<Media> collection) {
         this.id = id;
         this.title = title;

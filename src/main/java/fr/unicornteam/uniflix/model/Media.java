@@ -161,6 +161,26 @@ public abstract class Media extends CommonForUserMedia {
         this.group.add(group);
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getOrigin_country() {
+        return origin_country;
+    }
+
+    public void setOrigin_country(String origin_country) {
+        this.origin_country = origin_country;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
     @Override
     public String toString() {
         return "Media{" +
@@ -222,6 +242,7 @@ public abstract class Media extends CommonForUserMedia {
         listeCU.addAll(getUniverse());
         return listeCU;
     }
+
 
 
 }

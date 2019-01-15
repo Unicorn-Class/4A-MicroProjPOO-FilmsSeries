@@ -47,4 +47,8 @@ public class MediaWatched {
     public void setScore(int score) {
         this.score = score;
     }
+
+    public ArrayList<Integer> getView() {
+        return view;
+    }
 }
