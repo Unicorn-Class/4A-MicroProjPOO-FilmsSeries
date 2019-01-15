@@ -79,4 +79,9 @@ public class Season extends Media {
         }
 
     }
+
+    @Override
+    public ArrayList<Media> getSuggestionMediaFromList(int nb) {
+        return null;
+    }
 }
