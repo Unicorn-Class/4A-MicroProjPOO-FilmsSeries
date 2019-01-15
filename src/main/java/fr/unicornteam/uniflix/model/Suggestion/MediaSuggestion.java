@@ -47,7 +47,7 @@ public final class MediaSuggestion {
         ArrayList<MediaSuggest> listSugg = new ArrayList<>();
 
         //Why not add released date
-        for(Media m : Util.allMedia){
+        for(Media m : Util.allMedia()){
             if(m.getAverageScore()>LIMIT_SCORE){
                 listSugg.add(new MediaSuggest(m, calculScoreWithRandom(m)));
             }

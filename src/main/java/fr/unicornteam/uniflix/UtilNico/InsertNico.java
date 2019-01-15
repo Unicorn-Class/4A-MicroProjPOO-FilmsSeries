@@ -1,10 +1,7 @@
 package fr.unicornteam.uniflix.UtilNico;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
-import fr.unicornteam.uniflix.model.Media;
-import fr.unicornteam.uniflix.model.MediaWatched;
-import fr.unicornteam.uniflix.model.Movie;
-import fr.unicornteam.uniflix.model.User;
+import fr.unicornteam.uniflix.model.*;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -144,13 +141,24 @@ public class InsertNico {
 
         Movie s = null;
         try {
-            s=new Movie("Tron");
+            allMovie.add(new Movie("Tron"));
+            allMovie.add(new Movie("Retour vers le futur"));
+            allMovie.add(new Movie("Retour vers le futur 2"));
+            allMovie.add(new Movie("Retour vers le futur 3"));
+            allMovie.add(new Movie("Deadpool"));
+            allMovie.add(new Movie("Pirates des caraibes"));
+            allMovie.add(new Movie("Leon"));
+            allMovie.add(new Movie("Deadpool 2"));
+            allMovie.add(new Movie("High School Musical"));
+            allMovie.add(new Movie("Black Panther"));
+            allMovie.add(new Movie("Iron Man"));
+            allMovie.add(new Movie("Avenger"));
         } catch (ParseException e) {
             e.printStackTrace();
         } catch (UnirestException e) {
             e.printStackTrace();
         }
-
+/*
         allMovie.add(film1);
         allMovie.add(film2);
         allMovie.add(film3);
@@ -164,8 +172,27 @@ public class InsertNico {
         allMovie.add(film11);
         allMovie.add(film12);
         allMovie.add(s);
-
+*/
         return allMovie;
+    }
+
+
+    public static ArrayList<Serie> initSerie(){
+
+        ArrayList<Serie> allSerie = new ArrayList<>();
+
+        try {
+            allSerie.add(new Serie("Breaking bad"));
+            allSerie.add(new Serie("You"));
+            allSerie.add(new Serie("Walking dead"));
+            allSerie.add(new Serie("Westworld"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+return allSerie;
+
     }
 
     public static ArrayList<User> initUser(ArrayList<Media> allMedia) {

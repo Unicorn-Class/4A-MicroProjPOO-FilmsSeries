@@ -10,7 +10,7 @@ import java.util.Locale;
 public final class Util {
 
     public static ArrayList<Movie> allMovie = new ArrayList<>();
-    public static ArrayList<Media> allMedia = new ArrayList<>();
+    public static ArrayList<Serie> allSerie = new ArrayList<>();
 
     public static String convertDate(String str){
         try {
@@ -29,6 +29,10 @@ public final class Util {
     }
 
     public static ArrayList<Media> allMedia(){
+        ArrayList<Media> allMedia = new ArrayList<>();
+
+        allMedia.addAll(allMovie);
+        allMedia.addAll(allSerie);
         return allMedia;
     }
 
@@ -36,8 +40,8 @@ public final class Util {
         return allMovie;
     }
 
-    public static ArrayList<Media> AllSerie(){
-        return allMedia;
+    public static ArrayList<Serie> AllSerie(){
+        return allSerie;
     }
 
 }
