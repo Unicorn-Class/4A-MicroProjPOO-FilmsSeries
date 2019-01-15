@@ -34,7 +34,7 @@ public class Film extends Media {
         this.listeMovie = listeMovie;
     }
 
-    public Film(int id, String title, ArrayList<String> scenarist, ArrayList<String> actor, ArrayList<String> type, ArrayList<String> director, ArrayList<String> language, ArrayList<Media> universe, ArrayList<Media> collection) {
+    public Film(int id, String title, ArrayList<String> scenarist, ArrayList<String> actor, ArrayList<String> type, ArrayList<String> director, ArrayList<String> language, ArrayList<Media> universe, ArrayList<Media> collection, double avg) {
         this.id = id;
         this.title = title;
         this.scenarist = scenarist;
@@ -44,6 +44,7 @@ public class Film extends Media {
         this.language = language;
         this.universe = universe;
         this.collection = collection;
+        this.averageScore = avg;
     }
 
 

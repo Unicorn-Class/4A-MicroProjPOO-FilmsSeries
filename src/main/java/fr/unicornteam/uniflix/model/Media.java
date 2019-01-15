@@ -30,14 +30,14 @@ public abstract class Media extends CommonForUserMedia {
     }
 
 
-    //WARNING toRemove
-    float averageScore;
+    //TODO WARNING toRemove
+    double averageScore;
 
-    public float getAverageScore() {
+    public double getAverageScore() {
         return averageScore;
     }
 
-    public void setAverageScore(float averageScore) {
+    public void setAverageScore(double averageScore) {
         this.averageScore = averageScore;
     }
 
@@ -214,23 +214,15 @@ public abstract class Media extends CommonForUserMedia {
         ArrayList<Media> list = new ArrayList<>();
         ArrayList<MediaSuggest> mediasSuggest = MediaSuggestion.getSuggestionMedia(this, UtilNico.allMedia);
 
-        System.out.println("1");
         int limit = nb;
         if(nb>mediasSuggest.size()){
             limit = mediasSuggest.size();
         }
-        System.out.println("2");
 
         for(int i=0 ; i<limit ; i++) {
             list.add(mediasSuggest.get(i).getMedia());
         }
-        System.out.println("3");
         return list;
-    }
-
-    //USELESS BUT OBLIGATORY
-    public ArrayList<Media> getSuggestionMediaFromList(int nb){
-        return null;
     }
 
 

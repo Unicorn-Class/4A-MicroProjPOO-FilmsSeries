@@ -110,9 +110,5 @@ public class Episode extends Media{
 
     }
 
-    @Override
-    public ArrayList<Media> getSuggestionMediaFromList(int nb) {
-        return null;
-    }
 }
 
