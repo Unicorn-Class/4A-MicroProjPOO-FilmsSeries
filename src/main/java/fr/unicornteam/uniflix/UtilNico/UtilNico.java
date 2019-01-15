@@ -5,8 +5,6 @@ import fr.unicornteam.uniflix.model.Suggestion.MediaSuggest;
 import fr.unicornteam.uniflix.model.Suggestion.MediaSuggestion;
 import fr.unicornteam.uniflix.model.Suggestion.UserSuggest;
 import fr.unicornteam.uniflix.model.Suggestion.UserSuggestion;
-import javafx.scene.input.DataFormat;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -64,7 +62,8 @@ public class UtilNico {
         System.out.println("===========");
 
 
-        Util.allMovie = InsertNico.initMovie();
+ //       Util.allMovie = InsertNico.initMovie();
+        Util.allMovie = InsertNico.initOldMovie();
 //        Util.allSerie = InsertNico.initSerie();
 //        ArrayList<User> allUser = InsertNico.initUser(Util.allMedia());
 

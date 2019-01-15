@@ -9,8 +9,7 @@ import java.util.ArrayList;
 public class InsertNico {
 
 
-
-    public static ArrayList<Movie> initMovie() {
+    public static  ArrayList<Movie> initOldMovie(){
 
         ArrayList<Movie> allMovie = new ArrayList<>();
 
@@ -24,7 +23,8 @@ public class InsertNico {
                 new ArrayList<String>() {{add("fr");add("en");add("es");}},
                 new ArrayList<>(),
                 new ArrayList<>(),
-                4.7, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/mAZwHkJJtIkZT5jjrbTKbBVOrNN.jpg");
+                4.7, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/mAZwHkJJtIkZT5jjrbTKbBVOrNN.jpg",
+                "EYkguxpqsrg");
         Movie film2 = new Movie(2, "Retour vers le futur II",
                 new ArrayList<String>() {{add("Robert Zemeckis");add("Bob Gale");}},
                 new ArrayList<String>() {{add("Michael J. Fox");add("Christopher Lloyd");add("Thomas F. Wilson");add("Lea Thompson");}},
@@ -139,6 +139,28 @@ public class InsertNico {
                 new ArrayList<>(),
                 2.0, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gfDdVjCx5Nsfxv9p0OCy05mQdaV.jpg");
 
+
+        allMovie.add(film1);
+        allMovie.add(film2);
+        allMovie.add(film3);
+        allMovie.add(film4);
+        allMovie.add(film5);
+        allMovie.add(film6);
+        allMovie.add(film7);
+        allMovie.add(film8);
+        allMovie.add(film9);
+        allMovie.add(film10);
+        allMovie.add(film11);
+        allMovie.add(film12);
+
+        return allMovie;
+    }
+
+
+    public static ArrayList<Movie> initMovie() {
+
+        ArrayList<Movie> allMovie = new ArrayList<>();
+
         Movie s = null;
         try {
             allMovie.add(new Movie("Tron"));
@@ -153,24 +175,18 @@ public class InsertNico {
             allMovie.add(new Movie("Black Panther"));
             allMovie.add(new Movie("Iron Man"));
             allMovie.add(new Movie("Avenger"));
+            allMovie.add(new Movie("Avenger 2"));
+            allMovie.add(new Movie("Seven"));
+            allMovie.add(new Movie("The artist"));
+            allMovie.add(new Movie("The"));
+            allMovie.add(new Movie("Edmond"));
         } catch (ParseException e) {
             e.printStackTrace();
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 /*
-        allMovie.add(film1);
-        allMovie.add(film2);
-        allMovie.add(film3);
-        allMovie.add(film4);
-        allMovie.add(film5);
-        allMovie.add(film6);
-        allMovie.add(film7);
-        allMovie.add(film8);
-        allMovie.add(film9);
-        allMovie.add(film10);
-        allMovie.add(film11);
-        allMovie.add(film12);
+
         allMovie.add(s);
 */
         return allMovie;
