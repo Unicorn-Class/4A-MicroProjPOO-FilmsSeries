@@ -35,8 +35,8 @@ public class Episode extends Media{
                 ", averageScore=" + averageScore +
                 ", type=" + type +
                 ", actor=" + actor +
-                ", mediaSuggestion=" + mediaSuggestion +
-                ", userSuggestion=" + userSuggestion +
+                /*", mediaSuggestion=" + mediaSuggestion +
+                ", userSuggestion=" + userSuggestion +*/
                 '}';
     }
 
@@ -100,6 +100,11 @@ public class Episode extends Media{
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public ArrayList<Media> getSuggestionMediaFromList(int nb) {
+        return null;
     }
 }
 

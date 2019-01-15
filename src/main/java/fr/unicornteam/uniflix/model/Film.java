@@ -135,4 +135,11 @@ public class Film extends Media {
         }
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+    public ArrayList<Media> getSuggestionMediaFromList(int nb) {
+        return null;
+    }
+>>>>>>> basedOnAxelBlog
 }

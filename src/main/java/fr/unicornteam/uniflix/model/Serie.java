@@ -43,8 +43,8 @@ public class Serie extends Media {
                 ", averageScore=" + averageScore +
                 ", type=" + type +
                 ", actor=" + actor +
-                ", mediaSuggestion=" + mediaSuggestion +
-                ", userSuggestion=" + userSuggestion +
+                /*", mediaSuggestion=" + mediaSuggestion +
+                ", userSuggestion=" + userSuggestion +*/
                 '}';
     }
 
@@ -125,6 +125,11 @@ public class Serie extends Media {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public ArrayList<Media> getSuggestionMediaFromList(int nb) {
+        return null;
     }
 }
 
