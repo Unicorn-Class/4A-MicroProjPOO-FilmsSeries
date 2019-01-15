@@ -24,7 +24,10 @@ public abstract class Media extends CommonForUserMedia {
     ArrayList<Media> group;
     String origin_country;
     String overview;
-
+    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://145.239.222.239:3306/uniflix?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+    static final String USER = "uniflix";
+    static final String PASS = "unicorn.class";
     public String getOverview() {
         return overview;
     }
