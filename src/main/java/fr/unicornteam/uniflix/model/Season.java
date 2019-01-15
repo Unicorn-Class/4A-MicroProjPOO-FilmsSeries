@@ -15,6 +15,22 @@ public class Season extends Media {
     int id;
     ArrayList<Episode> episodeList;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ArrayList<Episode> getEpisodeList() {
+        return episodeList;
+    }
+
+    public void setEpisodeList(ArrayList<Episode> episodeList) {
+        this.episodeList = episodeList;
+    }
+
     @Override
     public String toString() {
         return "Season{" +
@@ -84,4 +100,6 @@ public class Season extends Media {
     public ArrayList<Media> getSuggestionMediaFromList(int nb) {
         return null;
     }
+
+
 }
