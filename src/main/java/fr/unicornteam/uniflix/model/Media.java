@@ -41,6 +41,7 @@ public abstract class Media extends CommonForUserMedia {
     //TODO WARNING toRemove
     double averageScore;
 
+    public int getId(){return id;}
     public double getAverageScore() {
         return averageScore;
     }

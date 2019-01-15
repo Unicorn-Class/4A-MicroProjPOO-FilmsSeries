@@ -31,6 +31,17 @@ public final class MediaSuggestion {
     private static final double LIMIT_SCORE = 2;
 
 
+
+
+    public static final ArrayList<Integer> getIdSuggestion(int nb){
+        ArrayList<Integer> listId = new ArrayList<>();
+        for(Media m : getSuggestion(nb)){
+            listId.add(m.getId());
+        }
+        return listId;
+    }
+
+
     public static final ArrayList<Media> getSuggestion(int nb){
         ArrayList<Media> list = new ArrayList<>();
         ArrayList<MediaSuggest> listSugg = new ArrayList<>();

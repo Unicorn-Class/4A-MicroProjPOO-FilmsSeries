@@ -9,6 +9,7 @@ import java.util.Locale;
 
 public final class Util {
 
+    public static ArrayList<Movie> allMovie = new ArrayList<>();
     public static ArrayList<Media> allMedia = new ArrayList<>();
 
     public static String convertDate(String str){
@@ -31,11 +32,11 @@ public final class Util {
         return allMedia;
     }
 
-    public static ArrayList<Media> allSerie(){
-        return allMedia;
+    public static ArrayList<Movie> allMovie(){
+        return allMovie;
     }
 
-    public static ArrayList<Media> allMovie(){
+    public static ArrayList<Media> AllSerie(){
         return allMedia;
     }
 

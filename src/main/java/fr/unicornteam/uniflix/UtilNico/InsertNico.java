@@ -1,23 +1,25 @@
 package fr.unicornteam.uniflix.UtilNico;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
 import fr.unicornteam.uniflix.model.Media;
 import fr.unicornteam.uniflix.model.MediaWatched;
 import fr.unicornteam.uniflix.model.Movie;
 import fr.unicornteam.uniflix.model.User;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class InsertNico {
 
 
 
-    public static ArrayList<Media> initMovie() {
+    public static ArrayList<Movie> initMovie() {
 
-        ArrayList<Media> allMedia = new ArrayList<>();
+        ArrayList<Movie> allMovie = new ArrayList<>();
 
         //		id	titre	scenarist	actor	type	director	language	universe	collection
 
-        Media film1 = new Movie(1, "Retour vers le futur",
+        Movie film1 = new Movie(1, "Retour vers le futur",
                 new ArrayList<String>() {{add("Robert Zemeckis");add("Bob Gale");}},
                 new ArrayList<String>() {{add("Michael J. Fox");add("Christopher Lloyd");add("Lea Thompson");add("Crispin Glover");add("Thomas F. Wilson");}},
                 new ArrayList<String>() {{add("SF");add("Classic");}},
@@ -26,7 +28,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 4.7, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/mAZwHkJJtIkZT5jjrbTKbBVOrNN.jpg");
-        Media film2 = new Movie(2, "Retour vers le futur II",
+        Movie film2 = new Movie(2, "Retour vers le futur II",
                 new ArrayList<String>() {{add("Robert Zemeckis");add("Bob Gale");}},
                 new ArrayList<String>() {{add("Michael J. Fox");add("Christopher Lloyd");add("Thomas F. Wilson");add("Lea Thompson");}},
                 new ArrayList<String>() {{add("SF");add("Classic");}},
@@ -36,7 +38,7 @@ public class InsertNico {
                 new ArrayList<Media>() {{add(film1);}},
                 4.4, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/6DmgPTZYaug7QNDjOhUDWyjOQDl.jpg");
         film1.addCollection(film2);
-        Media film3 = new Movie(3, "Retour vers le futur III",
+        Movie film3 = new Movie(3, "Retour vers le futur III",
                 new ArrayList<String>() {{add("Bob Gale");}},
                 new ArrayList<String>() {{add("Elisabeth Shue");add("Michael J. Fox");add("Christopher Lloyd");add("Mary Steenburgen");add("Thomas F. Wilson");}},
                 new ArrayList<String>() {{add("SF");add("Classic");}},
@@ -47,7 +49,7 @@ public class InsertNico {
                 4.1,"https://image.tmdb.org/t/p/w600_and_h900_bestv2/iufnDhWqYCNQXzcq5cuXcj2lj45.jpg");
         film1.addCollection(film3);
         film2.addCollection(film3);
-        Media film4 = new Movie(4, "Harry Potter : l'ecole des sorciers",
+        Movie film4 = new Movie(4, "Harry Potter : l'ecole des sorciers",
                 new ArrayList<String>() {{add("Steven Kloves");}},
                 new ArrayList<String>() {{add("Daniel Radcliffe");add("Rupert Grint");add("Emma Watson");add("Robbie Coltrane");add("Richard Harris");add("Ian Hart");add("Maggie Smith");add("Alan Rickman");}},
                 new ArrayList<String>() {{add("SF");add("Aventure");}},
@@ -56,7 +58,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 2.7, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/4bUd3nUGD2XnhLkYNCXHFjPHEH5.jpg");
-        Media film5 = new Movie(5, "Wallace et Gromit : Le Mystère du lapin-garou",
+        Movie film5 = new Movie(5, "Wallace et Gromit : Le Mystère du lapin-garou",
                 new ArrayList<String>() {{add("Nick Park");add("Steve Box");}},
                 new ArrayList<String>() {{add("Peter Sallis");}},
                 new ArrayList<String>() {{add("Classic");add("Anime");add("Comedie");}},
@@ -66,7 +68,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 3.8, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/rzMRsE5moQnJa9FM0ddZ4F74FEN.jpg");
 
-        Media film6 = new Movie(6, "Deadpool",
+        Movie film6 = new Movie(6, "Deadpool",
                 new ArrayList<String>() {{add("Rhett Reese");add("Paul Wernick");}},
                 new ArrayList<String>() {{add("Ryan Reynolds");add("Morena Baccarin");add("Ed Skrein");add("T. J. Miller");add("Gina Carano");}},
                 new ArrayList<String>() {{add("Classic");add("SH");add("SF");add("Action");}},
@@ -75,7 +77,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 5,"https://image.tmdb.org/t/p/w600_and_h900_bestv2/eJyRzC5uFjQryu8Hm61yqtrzj4S.jpg");
-        Media film7 = new Movie(7, "Sherlock Holmes",
+        Movie film7 = new Movie(7, "Sherlock Holmes",
                 new ArrayList<String>() {{add("Guy Ritchie");add("Michael Robert Johnson");}},
                 new ArrayList<String>() {{add("Robert Downey Jr.");add("Jude Law");add("Rachel McAdams");add("Mark Strong");add("Kelly Reilly");}},
                 new ArrayList<String>() {{add("Aventure");add("Action");}},
@@ -84,7 +86,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 3.1, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/cvbsO7oyZQbBeI8RZ9aw85JvAO9.jpg");
-        Media film8 = new Movie(8, "High School Musical",
+        Movie film8 = new Movie(8, "High School Musical",
                 new ArrayList<String>() {{add("Peter Barsocchini");}},
                 new ArrayList<String>() {{add("Zac Efron");add("Vanessa Hudgens");
                     add("Ashley Tisdale");add("Lucas Grabeel");add("Monique Coleman");}},
@@ -94,7 +96,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 2.1, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/1avf4Az9bikl6FiuUQH9UtZgR5D.jpg");
-        Media film9 = new Movie(9, "Hunger Games",
+        Movie film9 = new Movie(9, "Hunger Games",
                 new ArrayList<String>() {{add("Gary Ross");add("Suzanne Collins");add("Billy Ray");}},
                 new ArrayList<String>() {{add("Jennifer Lawrence");add("Josh Hutcherson");
                     add("Liam Hemsworth");add("Woody Harrelson");add("Stanley Tucci");}},
@@ -104,7 +106,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 2.8, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/nNpb7F5V7YdGMjp8mPCyVZhiUmv.jpg");
-        Media film10 = new Movie(10, "Bohemian Rhapsody",
+        Movie film10 = new Movie(10, "Bohemian Rhapsody",
                 new ArrayList<String>() {{add("Anthony McCarten");}},
                 new ArrayList<String>() {{add("Rami Malek");add("Ben Hardy");
                     add("Joseph Mazzello");add("Gwilym Lee");}},
@@ -114,7 +116,7 @@ public class InsertNico {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 3.4, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/zpf6mrGZ0BbdsfzwUP0Nzp3hJEb.jpg");
-        Media film11 = new Movie(11, "Black Panter",
+        Movie film11 = new Movie(11, "Black Panter",
                 new ArrayList<String>() {{add("Joe Robert Cole");add("Ryan Coogler");}},
                 new ArrayList<String>() {{add("Chadwick Boseman");add("Lupita Nyong'o");
                     add("Danai Gurira");add("Martin Freeman");add("Michael B. Jordan");}},
@@ -127,7 +129,9 @@ public class InsertNico {
 
         //		id	titre	scenarist	actor	type	director	language	universe	collection
 
-        Media film12 = new Movie(12, "Pirates des Caraïbes : La Malédiction du Black Pearl",
+
+
+        Movie film12 = new Movie(12, "Pirates des Caraïbes : La Malédiction du Black Pearl",
                 new ArrayList<String>() {{add("Terry Rossio");add(" \tTed Elliott");}},
                 new ArrayList<String>() {{add("Johnny Depp");add("Orlando Bloom");
                     add("Keira Knightley");add("Geoffrey Rush");}},
@@ -138,20 +142,30 @@ public class InsertNico {
                 new ArrayList<>(),
                 2.0, "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gfDdVjCx5Nsfxv9p0OCy05mQdaV.jpg");
 
-        allMedia.add(film1);
-        allMedia.add(film2);
-        allMedia.add(film3);
-        allMedia.add(film4);
-        allMedia.add(film5);
-        allMedia.add(film6);
-        allMedia.add(film7);
-        allMedia.add(film8);
-        allMedia.add(film9);
-        allMedia.add(film10);
-        allMedia.add(film11);
-        allMedia.add(film12);
+        Movie s = null;
+        try {
+            s=new Movie("Tron");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-        return allMedia;
+        allMovie.add(film1);
+        allMovie.add(film2);
+        allMovie.add(film3);
+        allMovie.add(film4);
+        allMovie.add(film5);
+        allMovie.add(film6);
+        allMovie.add(film7);
+        allMovie.add(film8);
+        allMovie.add(film9);
+        allMovie.add(film10);
+        allMovie.add(film11);
+        allMovie.add(film12);
+        allMovie.add(s);
+
+        return allMovie;
     }
 
     public static ArrayList<User> initUser(ArrayList<Media> allMedia) {

@@ -64,7 +64,7 @@ public class UtilNico {
         System.out.println("===========");
 
 
-        Util.allMedia = InsertNico.initMovie();
+        Util.allMovie = InsertNico.initMovie();
         ArrayList<User> allUser = InsertNico.initUser(Util.allMedia());
 
  //       testSuggestMediaFromMedia(allMedia);
