@@ -72,7 +72,7 @@
             <div class="col3">
                 <h1>Recommended</h1>
                 <div class="pictureGrid">
-                    <a th:each="media: ${recommended}" th:href="'/media?id='+${media.getId()}+'&class='''+${media.getClass().getTypeName()}+''''" class="movieCard">
+                    <a th:each="media: ${recommended}" th:href="'/media?id='+${media.getId()}+'&class='+${media.getClass().getTypeName()}" class="movieCard">
                         <img th:src="${media.getImg()}"/>
                         <div class="caption" th:text="${media.getTitle()}"></div>
                     </a>

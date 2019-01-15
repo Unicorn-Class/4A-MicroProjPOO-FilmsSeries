@@ -14,15 +14,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class AppController {
 
+    @GetMapping("/app")
+    public String app(Model model) {
+        return index(model);
+    }
+
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("newMovies", Util.allMovie());
-        model.addAttribute("newSeries", Util.allMedia());
-        model.addAttribute("recommended", Util.allMedia());
+        model.addAttribute("newSeries", Util.allMovie());
+        model.addAttribute("recommended", Util.allMovie());
         System.out.println("Util.allMedia().size() = " + Util.allMedia().size());
-        for (Media m : Util.allMedia()) {
-            System.out.println("m.getClass().getTypeName() = " + m.getClass().getTypeName());
-        }
         return "app";
     }
 
@@ -30,7 +32,7 @@ public class AppController {
     public String redirect(@RequestParam(name="id", required = true, defaultValue="1") Integer id,
                            @RequestParam(name="class", required=true, defaultValue = "fr.unicornteam.uniflix.model.Movie") String className,
                            Model model) {
-        if (className.split(".")[className.split(".").length] == "Movie") {
+        if (className == "fr.unicornteam.uniflix.model.Movie") {
             return (new MovieController()).movie(id, model);
         } else {
             return (new MovieController()).movie(id, model);
