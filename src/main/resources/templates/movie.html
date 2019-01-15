@@ -53,7 +53,7 @@
 
 
     <div class="main-media">
-        <iframe
+        <iframe th:src="'https://www.youtube.com/embed/'+${movie.getExtract().get(0)}+'?autoplay=1&controls=0'"
             src="https://www.youtube.com/embed/OPf1YYSKxBs?autoplay=1&controls=0"
             frameborder="0" allowfullscreen
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
@@ -131,7 +131,7 @@
                 </div>
             </div>
                 
-            <img src="img/poster.jpg"/>
+            <img th:src="${movie.getImg()}" src=""/>
         </div>
     </div>
 </body>
