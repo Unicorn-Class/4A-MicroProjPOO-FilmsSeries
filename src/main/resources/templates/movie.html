@@ -82,51 +82,19 @@
 
                 <h2>In the same universe</h2>
 
-                <div class="suggested" th:each="film: ${movie.getUniverse()}">
+                <div class="suggested" >
                     <a href="#" class="movieCard">
                         <img src="img/poster.jpg"/>
-                        <div class="caption" th:text="${movie.getTitle()}">Coucou</div>
+                        <div class="caption">Coucou</div>
                     </a>
                 </div>
 
                 <h2>Suggested</h2>
 
                 <div class="suggested">    
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>   
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
+                    <a href="#" class="movieCard" th:each="film: ${movie.getSuggestionMedia(5)}">
+                        <img th:src="${film.getImg()}"/>
+                        <div class="caption" th:text="${film.getTitle()}"></div>
                     </a>
                 </div>
             </div>
