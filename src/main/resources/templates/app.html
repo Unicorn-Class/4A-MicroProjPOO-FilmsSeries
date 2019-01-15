@@ -54,7 +54,7 @@
             <div class="col3">
                 <h1>New Movies</h1>
                 <div class="pictureGrid">
-                    <a th:each="movie: ${newMovies}" th:href="'/movie?value='+${movie.getId()}" class="movieCard">
+                    <a th:each="movie: ${newMovies}" th:href="'/movie?id='+${movie.getId()}" class="movieCard">
                         <img th:src="${movie.getImg()}"/>
                         <div class="caption" th:text="${movie.getTitle()}"></div>
                     </a>
@@ -63,54 +63,18 @@
             <div class="col3">
                 <h1>New Shows</h1>
                 <div class="pictureGrid">
-                    <a th:each="movie: ${newMovies}" th:href="'/movie?value='+${movie.getId()}" class="movieCard">
-                        <img th:src="${movie.getImg()}"/>
-                        <div class="caption" th:text="${movie.getTitle()}"></div>
+                    <a th:each="serie: ${newSeries}" th:href="'/serie?id='+${serie.getId()}" class="movieCard">
+                        <img th:src="${serie.getImg()}"/>
+                        <div class="caption" th:text="${serie.getTitle()}"></div>
                     </a>
                 </div>
             </div>
             <div class="col3">
                 <h1>Recommended</h1>
                 <div class="pictureGrid">
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
-                    </a>
-                    <a href="#" class="movieCard">
-                        <img src="img/poster.jpg"/>
-                        <div class="caption">Coucou</div>
+                    <a th:each="media: ${recommended}" th:href="'/media?id='+${media.getId()}+'&class='''+${media.getClass().getTypeName()}+''''" class="movieCard">
+                        <img th:src="${media.getImg()}"/>
+                        <div class="caption" th:text="${media.getTitle()}"></div>
                     </a>
                 </div>
             </div>

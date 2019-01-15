@@ -15,7 +15,7 @@ public class MovieController {
     MovieRepository repo;
 
     @GetMapping("/movie")
-    public String greeting(@RequestParam(name="id", required=false, defaultValue="1") Integer id, Model model) {
+    public String movie(@RequestParam(name="id", required=false, defaultValue="1") Integer id, Model model) {
         Movie movie = null;
         for (Movie m : Util.allMovie()) {
             if (m.getId() == id) movie = m;
