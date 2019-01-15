@@ -252,6 +252,14 @@ public class UtilNico {
         for(MediaSuggest ms : MediaSuggestion.getSuggestionMediaFromList(user)){
             System.out.println("\t\t"+ms);
         }
+        System.out.println("\t[CLASSIC VERSION] Films en lien avec "+allMedia.get(5));
+        for(Media m : allMedia.get(5).getSuggestionMedia(5)){
+            System.out.println("\t\t"+m.getTitle());
+        }
+        System.out.println("\t[NEW VERSION] Films en lien avec "+allMedia.get(5));
+        for(Media m : allMedia.get(5).getSuggestionMedia(5)){
+            System.out.println("\t\t"+m.getTitle());
+        }
 
     }
 
