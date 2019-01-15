@@ -134,9 +134,4 @@ public class Film extends Media {
             e.printStackTrace();
         }
     }
-
-    @Override
-    public ArrayList<Media> getSuggestionMediaFromList(int nb) {
-        return null;
-    }
 }
