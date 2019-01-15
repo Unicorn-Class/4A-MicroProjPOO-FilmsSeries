@@ -127,9 +127,36 @@ public class Serie extends Media {
 
     }
 
-    @Override
-    public ArrayList<Media> getSuggestionMediaFromList(int nb) {
-        return null;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(String currentState) {
+        this.currentState = currentState;
+    }
+
+    public int getNumberOfSeason() {
+        return numberOfSeason;
+    }
+
+    public void setNumberOfSeason(int numberOfSeason) {
+        this.numberOfSeason = numberOfSeason;
+    }
+
+    public ArrayList<Season> getSeasonList() {
+        return seasonList;
+    }
+
+    public void setSeasonList(ArrayList<Season> seasonList) {
+        this.seasonList = seasonList;
     }
 }
 

@@ -1,9 +1,9 @@
 package fr.unicornteam.uniflix.model.Suggestion;
 
+import fr.unicornteam.uniflix.UtilNico.UtilNico;
 import fr.unicornteam.uniflix.model.Media;
 import fr.unicornteam.uniflix.model.MediaWatched;
 import fr.unicornteam.uniflix.model.User;
-import fr.unicornteam.uniflix.model.Suggestion.MediaSuggest;
 
 import java.util.*;
 
@@ -19,11 +19,47 @@ public final class MediaSuggestion {
     private static final int COEFF_WATCHED = 2;
     private static final int LIMIT_LASTVIEW = 8;
 
-    private static  final int COEFF_SCORE = 2;
-    private static  final int COEFF_LASTVIEW = 5;
-    private static  final int COEFF_NBVIEW = 3;
-    private static  final int COEFF_AVGSCORE = 1;
+    private static final int COEFF_SCORE = 2;
+    private static final int COEFF_LASTVIEW = 5;
+    private static final int COEFF_NBVIEW = 3;
+    private static final int COEFF_AVGSCORE = 1;
 
+    private static final double COEFF_RANDOM = 3;
+
+    //TODO remove when avgScore un Media will removed ?
+    private static final double LIMIT_SCORE = 2;
+
+
+    public static final ArrayList<Media> getSuggestion(int nb){
+        ArrayList<Media> list = new ArrayList<>();
+        ArrayList<MediaSuggest> listSugg = new ArrayList<>();
+
+        //Why not add released date
+        for(Media m : UtilNico.allMedia){
+            if(m.getAverageScore()>LIMIT_SCORE){
+                listSugg.add(new MediaSuggest(m, calculScoreWithRandom(m)));
+            }
+        }
+        Collections.sort(listSugg);
+
+        int limit = nb;
+        if(nb>listSugg.size()){
+            limit = listSugg.size();
+        }
+
+        for(int i=0 ; i<limit ; i++) {
+            list.add(listSugg.get(i).getMedia());
+        }
+        return  list;
+
+    }
+
+    private static int calculScoreWithRandom(Media m) {
+        int score = 0;
+        score += m.getAverageScore() * COEFF_AVGSCORE;
+        score += Math.random()*(COEFF_AVGSCORE*COEFF_RANDOM);
+        return score;
+    }
 
 
     public static final ArrayList<MediaSuggest> getSuggestionMedia(User myUser, ArrayList<Media> allMedia){

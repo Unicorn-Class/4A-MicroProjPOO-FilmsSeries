@@ -9,12 +9,16 @@ import org.json.JSONObject;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 @Entity
-public class Film extends Media {
+public class Movie extends Media {
     @Id
     int id;
 
@@ -26,15 +30,15 @@ public class Film extends Media {
         this.id = id;
     }
 
-    public ArrayList<Film> getListeMovie() {
+    public ArrayList<Movie> getListeMovie() {
         return listeMovie;
     }
 
-    public void setListeMovie(ArrayList<Film> listeMovie) {
+    public void setListeMovie(ArrayList<Movie> listeMovie) {
         this.listeMovie = listeMovie;
     }
 
-    public Film(int id, String title, ArrayList<String> scenarist, ArrayList<String> actor, ArrayList<String> type, ArrayList<String> director, ArrayList<String> language, ArrayList<Media> universe, ArrayList<Media> collection, double avg) {
+    public Movie(int id, String title, ArrayList<String> scenarist, ArrayList<String> actor, ArrayList<String> type, ArrayList<String> director, ArrayList<String> language, ArrayList<Media> universe, ArrayList<Media> collection) {
         this.id = id;
         this.title = title;
         this.scenarist = scenarist;
@@ -44,18 +48,18 @@ public class Film extends Media {
         this.language = language;
         this.universe = universe;
         this.collection = collection;
-        this.averageScore = avg;
     }
 
 
-    ArrayList<Film> listeMovie=new ArrayList<Film>();
+    ArrayList<Movie> listeMovie=new ArrayList<Movie>();
 
     @Override
     public String toString() {
-        return "Film{" +
+        return "Movie{" +
                 "id=" + id +
                 ", listeMovie=" + listeMovie +
                 ", title='" + title + '\'' +
+                ", img='" + img + '\'' +
                 ", release=" + release +
                 ", scenarist=" + scenarist +
                 ", duration=" + duration +
@@ -74,7 +78,7 @@ public class Film extends Media {
                 '}';
     }
 
-    public Film(String keyMovie) throws ParseException, UnirestException {
+    public Movie(String keyMovie) throws ParseException, UnirestException {
 
         /**Get the movie**/
         keyMovie=keyMovie.replaceAll(" ","%20");
@@ -143,11 +147,23 @@ public class Film extends Media {
 
     public static void main(String[] args) {
         try {
-            Film s=new Film("Moi moche et méchant");
+            Movie s=new Movie("Moi moche et méchant");
+            Connection conn = null;
+            Statement stmt = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
             System.out.println(s);
+            String sql = "INSERT INTO movie (title, release_date, overview, image, country) VALUES ('"+s.title+"','"+s.release+"','"+s.overview+"','"+s.img+"','"+s.origin_country+"')";
+            System.out.println("sql = " + sql);
+            stmt.executeUpdate(sql);
         } catch (UnirestException e) {
             e.printStackTrace();
         } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

@@ -14,6 +14,14 @@ import java.util.ArrayList;
 public class Episode extends Media{
     int id;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Episode{" +
@@ -102,9 +110,5 @@ public class Episode extends Media{
 
     }
 
-    @Override
-    public ArrayList<Media> getSuggestionMediaFromList(int nb) {
-        return null;
-    }
 }
 

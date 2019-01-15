@@ -14,40 +14,41 @@
 </head>
 
 <body>
-    <nav class="bg-blue">
-        <img src="img/logo.png" alt="Logo Uniflix" class="logo">
-        <div class="buttons">
-            <a href="app.html"><i class="material-icons">home</i></a>
-            <a href="discover.html"><i class="material-icons">explore</i></a>
-            <a href=""><i class="material-icons">history</i></a>
-        </div>
+<nav class="bg-blue">
+    <img src="img/logo.png" alt="Logo Uniflix" class="logo">
+    <div class="buttons">
+        <a href="app"><i class="material-icons">home</i></a>
+        <a href="discover"><i class="material-icons">explore</i></a>
+        <a href="history"><i class="material-icons">history</i></a>
+    </div>
 
-        <div class="searchbar">
-            <i class="material-icons">search</i>
-            <form>
-                <input type="text">
-            </form>
-            <a href=""><i class="material-icons">arrow_forward</i></a>
-        </div>
+    <div class="searchbar">
+        <i class="material-icons">search</i>
+        <form>
+            <input type="text" value="" placeholder="Minions">
+        </form>
+        <a href="search"><i class="material-icons">arrow_forward</i></a>
+    </div>
 
-        <div class="buttons user">
-            <a href="#" onclick="userMenu()"><i class="material-icons">person</i></a>
-            <div class="user-menu">
-                <a href="">
-                    <i class="material-icons">playlist_play</i>
-                    <p>My list</p>
-                </a>
-                <a href="">
-                    <i class="material-icons">settings</i>
-                    <p>Settings</p>
-                </a>
-                <a class="last">
-                    <i class="material-icons">power_settings_new</i>
-                    <p>Logout</p>
-                </a>
-            </div>
+
+    <div class="buttons user">
+        <a href="#" onclick="userMenu()"><i class="material-icons">person</i></a>
+        <div class="user-menu">
+            <a href="watchlist">
+                <i class="material-icons">playlist_play</i>
+                <p>My list</p>
+            </a>
+            <a href="settings">
+                <i class="material-icons">settings</i>
+                <p>Settings</p>
+            </a>
+            <a href="disconnect" class="last">
+                <i class="material-icons">power_settings_new</i>
+                <p>Logout</p>
+            </a>
         </div>
-    </nav>
+    </div>
+</nav>
     
 
 
@@ -63,7 +64,7 @@
                     <div class="title"  th:text="${movie.getTitle()}">Moi, Moche et Méchant</div>
                     <div class="time-data" th:text="${movie.getRelease()}+' - '+${movie.getDuration()}">2010 - 1h35</div>
                     <div class="types" th:each="type: ${movie.getType()}">
-                        <a href="/search?type=" th:href="'search?type=' +${type()}" th:text="${type}">Famille</a>
+                        <a href="/search?type=" th:href="'search?type=' +${type}" th:text="${type}">Famille</a>
                     </div>
                 </div>
 

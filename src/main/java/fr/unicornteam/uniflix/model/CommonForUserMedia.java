@@ -1,9 +1,5 @@
 package fr.unicornteam.uniflix.model;
 
-import fr.unicornteam.uniflix.model.Suggestion.MediaSuggest;
-import fr.unicornteam.uniflix.model.Suggestion.MediaSuggestion;
-import fr.unicornteam.uniflix.model.Suggestion.UserSuggestion;
-
 import java.util.ArrayList;
 
 public abstract class CommonForUserMedia {
@@ -37,5 +33,4 @@ public abstract class CommonForUserMedia {
 
 
     public abstract ArrayList<Media> getSuggestionMedia(int nb);
-    public abstract ArrayList<Media> getSuggestionMediaFromList(int nb);
 }

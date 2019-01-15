@@ -96,3 +96,5 @@ fabric.properties
 /dist/
 /nbdist/
 /.nb-gradle/
+
+\.DS_Store

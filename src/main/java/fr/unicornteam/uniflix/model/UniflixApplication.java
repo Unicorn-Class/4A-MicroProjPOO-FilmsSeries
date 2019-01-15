@@ -20,7 +20,7 @@ public class UniflixApplication {
 
 
 
-		films.add(new Film();
+		films.add(new Movie();
 
 		MediaSuggestion.getSuggestionMedia()*/
 	}

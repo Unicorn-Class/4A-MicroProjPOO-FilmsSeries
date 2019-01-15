@@ -24,20 +24,23 @@ public abstract class Media extends CommonForUserMedia {
     ArrayList<Media> group;
     String origin_country;
     String overview;
-
+    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://145.239.222.239:3306/uniflix?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+    static final String USER = "uniflix";
+    static final String PASS = "unicorn.class";
     public String getOverview() {
         return overview;
     }
 
 
-    //WARNING toRemove
-    float averageScore;
+    //TODO WARNING toRemove
+    double averageScore;
 
-    public float getAverageScore() {
+    public double getAverageScore() {
         return averageScore;
     }
 
-    public void setAverageScore(float averageScore) {
+    public void setAverageScore(double averageScore) {
         this.averageScore = averageScore;
     }
 
@@ -161,6 +164,26 @@ public abstract class Media extends CommonForUserMedia {
         this.group.add(group);
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getOrigin_country() {
+        return origin_country;
+    }
+
+    public void setOrigin_country(String origin_country) {
+        this.origin_country = origin_country;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
     @Override
     public String toString() {
         return "Media{" +
@@ -205,10 +228,6 @@ public abstract class Media extends CommonForUserMedia {
         return list;
     }
 
-    public ArrayList<Media> getSuggestionMediaFromList(int nb){
-        return null;
-    }
-
 
 
     public ArrayList<Media> ucMedia(){
@@ -218,6 +237,7 @@ public abstract class Media extends CommonForUserMedia {
         listeCU.addAll(getUniverse());
         return listeCU;
     }
+
 
 
 }
