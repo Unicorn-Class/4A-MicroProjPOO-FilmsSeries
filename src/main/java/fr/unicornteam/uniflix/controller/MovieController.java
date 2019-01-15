@@ -15,6 +15,8 @@ public class MovieController {
     @GetMapping("/movie")
     public String greeting(@RequestParam(name="id", required=false, defaultValue="1") Integer id, Model model) {
         model.addAttribute("movie", repo.findById(id).get());
+
+
         return "movie";
     }
 }
