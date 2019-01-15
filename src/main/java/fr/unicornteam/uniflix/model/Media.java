@@ -4,12 +4,17 @@ import fr.unicornteam.uniflix.UtilNico.UtilNico;
 import fr.unicornteam.uniflix.model.Suggestion.MediaSuggest;
 import fr.unicornteam.uniflix.model.Suggestion.MediaSuggestion;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public abstract class Media extends CommonForUserMedia {
+    @Id
+    int id;
     String title;
     String img;
     Date release;

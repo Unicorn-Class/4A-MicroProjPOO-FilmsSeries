@@ -6,6 +6,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javax.persistence.Entity;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Serie extends Media {
     int id;
     String currentState;
