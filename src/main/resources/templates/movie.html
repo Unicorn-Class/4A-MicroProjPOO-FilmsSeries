@@ -63,8 +63,8 @@
                 <div class="description">
                     <div class="title"  th:text="${movie.getTitle()}">Moi, Moche et Méchant</div>
                     <div class="time-data" th:text="${movie.getRelease()}+' - '+${movie.getDuration()}">2010 - 1h35</div>
-                    <div class="types" th:each="type: ${movie.getType()}">
-                        <a href="/search?type=" th:href="'search?type=' +${type}" th:text="${type}">Famille</a>
+                    <div class="types">
+                        <a href="/search?type=" th:each="type: ${movie.getType()}" th:href="'search?type=' +${type}" th:text="${type}">Famille</a>
                     </div>
                 </div>
 

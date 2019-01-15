@@ -66,8 +66,8 @@
         <div class="col2">
             <h1>Movies</h1>
             <div class="pictureGrid">
-                <a href="#" class="movieCard" th:each="media: ${medias}">
-                    <img src="img/poster.jpg"/>
+                <a href="#" class="movieCard" th:each="media: ${movies}" th:href="'movie?id='+${media.getId()}">
+                    <img th:src="${media.getImg()}" src=""/>
                     <div class="caption" th:text="${media.getTitle()}"></div>
                 </a>
             </div>
@@ -75,13 +75,9 @@
         <div class="col2">
             <h1>Shows</h1>
             <div class="pictureGrid">
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
+                <a href="#" class="movieCard" th:each="media: ${shows}" th:href="'movie?id='+${media.getId()}">
+                    <img  th:src="${media.getImg()}" src=""/>
+                    <div class="caption" th:text="${media.getTitle()}"></div>
                 </a>
             </div>
         </div>

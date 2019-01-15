@@ -1,5 +1,7 @@
 package fr.unicornteam.uniflix.controller;
 
+import fr.unicornteam.uniflix.model.Movie;
+import fr.unicornteam.uniflix.model.Util;
 import fr.unicornteam.uniflix.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +16,11 @@ public class MovieController {
 
     @GetMapping("/movie")
     public String greeting(@RequestParam(name="id", required=false, defaultValue="1") Integer id, Model model) {
-        model.addAttribute("movie", repo.findById(id).get());
-
-
+        Movie movie = null;
+        for (Movie m : Util.allMovie()) {
+            if (m.getId() == id) movie = m;
+        }
+        model.addAttribute("movie", movie);
         return "movie";
     }
 }
