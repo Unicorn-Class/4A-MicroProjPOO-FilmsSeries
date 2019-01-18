@@ -52,7 +52,7 @@
 
     <div class="main">
         <div class="col">
-            <h1>Search results for : </h1>
+            <h1 th:text="'Search results for : '+${query}"></h1>
             <div class="pictureGrid">
                 <a th:each="media: ${results}" th:href="'/media?id='+${media.getId()}+'&class='+${media.getClass().getTypeName()}" class="movieCard">
                     <img th:src="${media.getImg()}"/>
