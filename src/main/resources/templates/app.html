@@ -24,12 +24,11 @@
 
         <div class="searchbar">
             <i class="material-icons">search</i>
-            <form action="#" th:action="@{/search}" th:object="${searchString}" method="post">
+            <form id="searchForm" action="#" th:action="@{/search}" th:object="${searchString}" method="post">
                 <input type="text" value="" placeholder="Minions" th:field="*{searchValue}">
+                <a href="#" onclick="document.getElementById('searchForm').submit();"><i class="material-icons">arrow_forward</i></a>
             </form>
-            <a href="search"><i class="material-icons">arrow_forward</i></a>
         </div>
-
 
         <div class="buttons user">
             <a href="#" onclick="userMenu()"><i class="material-icons">person</i></a>
