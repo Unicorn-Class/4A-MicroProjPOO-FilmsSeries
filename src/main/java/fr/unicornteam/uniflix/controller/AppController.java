@@ -1,11 +1,8 @@
 package fr.unicornteam.uniflix.controller;
 
 import fr.unicornteam.uniflix.model.Media;
+import fr.unicornteam.uniflix.model.Search;
 import fr.unicornteam.uniflix.model.Util;
-import fr.unicornteam.uniflix.repositories.MediaRepository;
-import fr.unicornteam.uniflix.repositories.MovieRepository;
-import fr.unicornteam.uniflix.repositories.SerieRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +16,14 @@ public class AppController {
         return index(model);
     }
 
+    @GetMapping("/index")
+    public String indexHome(Model model) {
+        return index(model);
+    }
+
     @GetMapping("/")
     public String index(Model model) {
+        model.addAttribute("searchString", new Search());
         model.addAttribute("newMovies", Util.allMovie());
         model.addAttribute("newSeries", Util.allMovie());
         model.addAttribute("recommended", Util.allMovie());
