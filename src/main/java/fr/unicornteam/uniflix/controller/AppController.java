@@ -1,5 +1,7 @@
 package fr.unicornteam.uniflix.controller;
 
+import fr.unicornteam.uniflix.model.Media;
+import fr.unicornteam.uniflix.model.Search;
 import fr.unicornteam.uniflix.model.Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ public class AppController {
 
     @GetMapping("/")
     public String index(Model model) {
+        model.addAttribute("searchString", new Search());
         model.addAttribute("newMovies", Util.allMovie());
         model.addAttribute("newSeries", Util.allMovie());
         model.addAttribute("recommended", Util.allMovie());
