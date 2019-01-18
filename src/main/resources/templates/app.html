@@ -24,7 +24,7 @@
 
         <div class="searchbar">
             <i class="material-icons">search</i>
-            <form action="#" th:action="@{/search}" method="post">
+            <form action="#" th:action="@{/search}" th:object="${search}" method="post">
                 <input type="text" value="" placeholder="Minions" th:field="*{searchValue}">
             </form>
             <a href="search"><i class="material-icons">arrow_forward</i></a>

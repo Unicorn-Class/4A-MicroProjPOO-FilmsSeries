@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
 
@@ -54,69 +54,9 @@
         <div class="col">
             <h1>Search results for : </h1>
             <div class="pictureGrid">
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
-                </a>
-                <a href="#" class="movieCard">
-                    <img src="img/poster.jpg"/>
-                    <div class="caption">Coucou</div>
+                <a th:each="media: ${results}" th:href="'/media?id='+${media.getId()}+'&class='+${media.getClass().getTypeName()}" class="movieCard">
+                    <img th:src="${media.getImg()}"/>
+                    <div class="caption" th:text="${media.getTitle()}"></div>
                 </a>
             </div>
         </div>
