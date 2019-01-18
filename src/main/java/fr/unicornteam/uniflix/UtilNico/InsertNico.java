@@ -128,6 +128,8 @@ public class InsertNico {
 
 
 
+
+
         Movie film12 = new Movie(12, "Pirates des Caraïbes : La Malédiction du Black Pearl",
                 new ArrayList<String>() {{add("Terry Rossio");add(" \tTed Elliott");}},
                 new ArrayList<String>() {{add("Johnny Depp");add("Orlando Bloom");
@@ -166,14 +168,15 @@ public class InsertNico {
             allMovie.add(new Movie("Tron"));
             allMovie.add(new Movie("Retour vers le futur"));
             allMovie.add(new Movie("Retour vers le futur 2"));
-            allMovie.add(new Movie("Retour vers le futur 3"));
+//            allMovie.add(new Movie("Retour vers le futur 3"));
             allMovie.add(new Movie("Deadpool"));
             allMovie.add(new Movie("Pirates des caraibes"));
-            allMovie.add(new Movie("Leon"));
+//            allMovie.add(new Movie("Leon"));
             allMovie.add(new Movie("Deadpool 2"));
             allMovie.add(new Movie("High School Musical"));
-            allMovie.add(new Movie("Black Panther"));
-/*            allMovie.add(new Movie("Iron Man"));
+            allMovie.add(new Movie("Harry Potter"));
+/*            allMovie.add(new Movie("Black Panther"));
+            allMovie.add(new Movie("Iron Man"));
             allMovie.add(new Movie("Avenger"));
             allMovie.add(new Movie("Avenger 2"));
             allMovie.add(new Movie("Seven"));
