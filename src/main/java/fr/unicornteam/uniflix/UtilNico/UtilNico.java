@@ -65,8 +65,8 @@ public class UtilNico {
  //       testSuggestMediaFromMedia(allMedia);
 //        testSuggestUser(allUser);
 //        testSuggestMediaFromUser(allUser.get(4), allMedia);
- //       testSuggestHome();
-        testSearch();
+//       testSuggestHome();
+//        testSearch();
 
 
         System.out.println("===============");

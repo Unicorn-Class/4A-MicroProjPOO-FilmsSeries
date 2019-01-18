@@ -1,5 +1,6 @@
 package fr.unicornteam.uniflix.controller;
 
+import fr.unicornteam.uniflix.model.Search;
 import fr.unicornteam.uniflix.model.Suggestion.MediaSuggestion;
 import fr.unicornteam.uniflix.model.Util;
 import fr.unicornteam.uniflix.repositories.MovieRepository;
@@ -16,6 +17,7 @@ public class DiscoverController {
 
     @GetMapping("/discover")
     public String discover(Model model) {
+        model.addAttribute("searchString", new Search());
         model.addAttribute("movies", Util.allMovie());
         model.addAttribute("shows", Util.AllSerie());
         return "discover";

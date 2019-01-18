@@ -1,6 +1,7 @@
 package fr.unicornteam.uniflix.controller;
 
 import fr.unicornteam.uniflix.model.Movie;
+import fr.unicornteam.uniflix.model.Search;
 import fr.unicornteam.uniflix.model.Util;
 import fr.unicornteam.uniflix.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class MovieController {
 
     @GetMapping("/movie")
     public String movie(@RequestParam(name="id", required=false, defaultValue="1") Integer id, Model model) {
+        model.addAttribute("searchString", new Search());
         Movie movie = null;
         for (Movie m : Util.allMovie()) {
             if (m.getId() == id) movie = m;

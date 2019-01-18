@@ -63,6 +63,10 @@ nav {
     text-decoration: none;
 }
 
+.searchbar > a > i {
+    color: white;
+}
+
 .searchbar input {
     background-color: #203864;
     color: white;

@@ -35,6 +35,7 @@ public class AppController {
     public String redirect(@RequestParam(name="id", required = true, defaultValue="1") Integer id,
                            @RequestParam(name="class", required=true, defaultValue = "fr.unicornteam.uniflix.model.Movie") String className,
                            Model model) {
+        model.addAttribute("searchString", new Search());
         if (className == "fr.unicornteam.uniflix.model.Movie") {
             return (new MovieController()).movie(id, model);
         } else {
