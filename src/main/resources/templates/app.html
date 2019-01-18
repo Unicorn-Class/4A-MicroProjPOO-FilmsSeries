@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
 
@@ -24,7 +24,7 @@
 
         <div class="searchbar">
             <i class="material-icons">search</i>
-            <form>
+            <form action="#" th:action="@{/search}" method="post">
                 <input type="text" value="" placeholder="Minions">
             </form>
             <a href="search"><i class="material-icons">arrow_forward</i></a>
