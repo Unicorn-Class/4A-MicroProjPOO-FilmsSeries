@@ -55,7 +55,7 @@ nav {
     color: white;
 }
 
-.searchbar > a {
+.searchbar a {
     color: white;
     display: flex;
     flex-direction: row;
@@ -63,7 +63,7 @@ nav {
     text-decoration: none;
 }
 
-.searchbar > a > i {
+.searchbar a > i {
     color: white;
 }
 
