@@ -49,17 +49,9 @@ public class UtilNico {
 
 
     public static void test() {
-        System.out.println("==================");
-        System.out.println(" TEST POUR VICTOR ");
-        System.out.println("==================");
-
-        System.out.println(convertDate("Tue Jul 13 00:00:00 CEST 2011"));
-
-
-
-        System.out.println("===========");
-        System.out.println(" TEST NICO ");
-        System.out.println("===========");
+        System.out.println("=============");
+        System.out.println(" INSERT NICO ");
+        System.out.println("=============");
 
 
         Util.allMovie = InsertNico.initMovie();
@@ -67,16 +59,29 @@ public class UtilNico {
 //        Util.allSerie = InsertNico.initSerie();
 //        ArrayList<User> allUser = InsertNico.initUser(Util.allMedia());
 
+        System.out.println("===========");
+        System.out.println(" TEST NICO ");
+        System.out.println("===========");
  //       testSuggestMediaFromMedia(allMedia);
 //        testSuggestUser(allUser);
 //        testSuggestMediaFromUser(allUser.get(4), allMedia);
-        testSuggestHome();
+ //       testSuggestHome();
+        testSearch();
 
 
         System.out.println("===============");
         System.out.println(" FIN TEST NICO ");
         System.out.println("===============");
 
+    }
+
+    private static void testSearch() {
+        for(Media m : Util.research("Harry Potter")){
+            System.out.println("\t\t" + m.getTitle());
+        }
+        for(Media m : Util.research("Iron Man")){
+            System.out.println("\t\t" + m.getTitle());
+        }
     }
 
     private static void testSuggestHome() {
