@@ -16,6 +16,11 @@ public class AppController {
         return index(model);
     }
 
+    @GetMapping("/index")
+    public String indexHome(Model model) {
+        return index(model);
+    }
+
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("searchString", new Search());

@@ -7,13 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
 @Controller
 public class SearchController {
 
-    @GetMapping("/search")
+    @PostMapping("/search")
     public String search(@ModelAttribute Search search, Model model) {
         List<Media> results = Util.research(search.getSearchValue());
         model.addAttribute("results", results);
