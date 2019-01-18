@@ -79,7 +79,7 @@ public class UtilNico {
         for(Media m : Util.research("Harry Potter")){
             System.out.println("\t\t" + m.getTitle());
         }
-        for(Media m : Util.research("Iron Man")){
+        for(Media m : Util.research("Leon")){
             System.out.println("\t\t" + m.getTitle());
         }
     }
