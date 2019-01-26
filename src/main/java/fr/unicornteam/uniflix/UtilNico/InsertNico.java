@@ -175,15 +175,15 @@ public class InsertNico {
             allMovie.add(new Movie("Deadpool 2"));
             allMovie.add(new Movie("High School Musical"));
             allMovie.add(new Movie("Harry Potter"));
-/*            allMovie.add(new Movie("Black Panther"));
+            allMovie.add(new Movie("Black Panther"));
             allMovie.add(new Movie("Iron Man"));
-            allMovie.add(new Movie("Avenger"));
-            allMovie.add(new Movie("Avenger 2"));
-            allMovie.add(new Movie("Seven"));
+//            allMovie.add(new Movie("Avengers"));
+//            allMovie.add(new Movie("Avengers 2"));
+/*            allMovie.add(new Movie("Seven"));
             allMovie.add(new Movie("The artist"));
             allMovie.add(new Movie("The"));
-            allMovie.add(new Movie("Edmond"));
-*/        } catch (ParseException e) {
+            allMovie.add(new Movie("Edmond"));*/
+        } catch (ParseException e) {
             e.printStackTrace();
         } catch (UnirestException e) {
             e.printStackTrace();

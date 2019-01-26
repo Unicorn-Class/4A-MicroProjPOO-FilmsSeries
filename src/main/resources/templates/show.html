@@ -53,11 +53,12 @@
 
 
     <div class="main-media">
-        <iframe
+        <iframe id="player"
             src="https://www.youtube.com/embed/OPf1YYSKxBs?autoplay=1&controls=0&loop=1"
             frameborder="0" allowfullscreen
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
         </iframe>
+        <i id="playBtn" onclick="toggleTrailer()" class="material-icons">fullscreen</i>
         <div class="media show">
             <div class="content">
                 <div class="description">
@@ -334,5 +335,6 @@
         </div>
     </div>
     <script src="js/show.js"></script>
+    <script src="js/media.js"></script>
 </body>
 </html>

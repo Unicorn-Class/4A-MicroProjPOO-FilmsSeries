@@ -119,7 +119,7 @@ public class Movie extends Media {
         this.setType(t);
         this.origin_country=res2.getJSONArray("production_countries").getJSONObject(0).getString("name");
         this.averageScore=(float)res2.getDouble("vote_average");
-        this.img="https://image.tmdb.org/t/p/w1280"+res2.getString("backdrop_path");
+        this.img="https://image.tmdb.org/t/p/w1280"+res2.getString("poster_path");
 
 
         HttpResponse<JsonNode> ensemble=Unirest.get("https://api.themoviedb.org/3/movie/"+this.id+"/credits?api_key="+key).asJson();
