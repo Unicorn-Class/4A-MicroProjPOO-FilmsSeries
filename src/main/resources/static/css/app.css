@@ -53,6 +53,7 @@ nav {
     padding: 5px;
     border-radius: 5px;
     color: white;
+    width: 60%;
 }
 
 .searchbar a {
@@ -73,7 +74,7 @@ nav {
     border: 0;
     margin: 0 7px;
     font-size: 1.5em;
-    width: 30em;
+    width: 95%;
 }
 
 .searchbar input:focus {
@@ -576,4 +577,9 @@ h1{
 
 .main-media .content h2 {
     margin-left: 2%;
+}
+
+#searchForm {
+    display: flex;
+    width: 100%;
 }
