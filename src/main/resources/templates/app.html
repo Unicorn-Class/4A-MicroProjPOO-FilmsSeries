@@ -53,7 +53,7 @@
             <div class="col3">
                 <h1>New Movies</h1>
                 <div class="pictureGrid">
-                    <a th:each="movie: ${newMovies}" th:href="'/movie?id='+${movie.getId()}" class="movieCard">
+                    <a th:each="movie: ${newMovies}" th:href="'/media?id='+${movie.getId()}+'&class='+${movie.getClass().getTypeName()}" class="movieCard">
                         <img th:src="${movie.getImg()}"/>
                         <div class="caption" th:text="${movie.getTitle()}"></div>
                     </a>
@@ -62,7 +62,7 @@
             <div class="col3">
                 <h1>New Shows</h1>
                 <div class="pictureGrid">
-                    <a th:each="serie: ${newSeries}" th:href="'/serie?id='+${serie.getId()}" class="movieCard">
+                    <a th:each="serie: ${newSeries}" th:href="'/media?id='+${serie.getId()}+'&class='+${serie.getClass().getTypeName()}" class="movieCard">
                         <img th:src="${serie.getImg()}"/>
                         <div class="caption" th:text="${serie.getTitle()}"></div>
                     </a>
