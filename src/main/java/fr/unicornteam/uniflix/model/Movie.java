@@ -99,6 +99,7 @@ public class Movie extends Media {
         /**Get the movie**/
         keyMovie=keyMovie.replaceAll(" ","%20");
         String key="8600861f4787df9fb2f5752da938b459";
+
         HttpResponse<JsonNode> response = Unirest.get("https://api.themoviedb.org/3/search/movie?api_key="+key+"&language=en-US&query="+keyMovie).asJson();
         JSONArray rs =response.getBody().getObject().getJSONArray("results");
         this.id=rs.getJSONObject(0).getInt("id");
@@ -167,7 +168,11 @@ public class Movie extends Media {
         /**Get additionnal information**/
         try {
             HttpResponse<JsonNode> additionnal = Unirest.get("https://api.themoviedb.org/3/movie/"+this.id+"?api_key="+key).asJson();
-            System.out.println("API Response For Common Infos : "+additionnal.getStatus());
+            int statusCode = additionnal.getStatus();
+            if (statusCode != 200) {
+                System.out.println("Waiting 10 sec to avoid HTTP 419...");
+                additionnal = Unirest.get("https://api.themoviedb.org/3/movie/"+this.id+"?api_key="+key).asJson();
+            }
             JSONObject res2 = additionnal.getBody().getObject();
             this.title=res2.optString("original_title");
             String date=res2.optString("release_date","1900-01-01");
@@ -196,7 +201,11 @@ public class Movie extends Media {
 
 
             HttpResponse<JsonNode> ensemble=Unirest.get("https://api.themoviedb.org/3/movie/"+this.id+"/credits?api_key="+key).asJson();
-            System.out.println("API Response For Ensemble : "+ensemble.getStatus());
+            statusCode = ensemble.getStatus();
+            if (statusCode != 200) {
+                System.out.println("Waiting 10 sec to avoid HTTP 419...");
+                ensemble = Unirest.get("https://api.themoviedb.org/3/movie/"+this.id+"/credits?api_key="+key).asJson();
+            }
             JSONObject ens=ensemble.getBody().getObject();
 
             ArrayList<String> act=new ArrayList<String>();
@@ -225,7 +234,11 @@ public class Movie extends Media {
             }
             /**Recupération des extraits**/
             HttpResponse<JsonNode> extract = Unirest.get("https://api.themoviedb.org/3/movie/" + this.id + "/videos?api_key=" + key).asJson();
-            System.out.println("API Response For Trailers : "+extract.getStatus());
+            statusCode = extract.getStatus();
+            if (statusCode != 200) {
+                System.out.println("Waiting 10 sec to avoid HTTP 419...");
+                extract = Unirest.get("https://api.themoviedb.org/3/movie/" + this.id + "/videos?api_key=" + key).asJson();
+            }
             JSONObject res3 = extract.getBody().getObject();
             this.extract = new ArrayList<String>();
 

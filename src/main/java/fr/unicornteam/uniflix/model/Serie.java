@@ -56,6 +56,11 @@ public class Serie extends Media {
         /**Request to the API**/
         String key ="8600861f4787df9fb2f5752da938b459";
         HttpResponse<JsonNode> response = Unirest.get("https://api.themoviedb.org/3/search/tv?page=1&query="+keyword+"&api_key="+key).asJson();
+        int statusCode = response.getStatus();
+        if (statusCode != 200) {
+            System.out.println("Waiting 10 sec to avoid HTTP 419...");
+            response = Unirest.get("https://api.themoviedb.org/3/search/tv?page=1&query="+keyword+"&api_key="+key).asJson();
+        }
         JSONArray res =response.getBody().getObject().getJSONArray("results");
 
         /**Get the main values**/
@@ -91,17 +96,17 @@ public class Serie extends Media {
 
         this.numberOfSeason=res2.getInt("number_of_seasons");
         this.seasonList=new ArrayList<Season>();
-        for (int i =1;i<=this.numberOfSeason;i++){
+        /*for (int i =1;i<=this.numberOfSeason;i++){
             Season s =new Season(this.id,i);
             seasonList.add(s);
 
-        }
+        }*/
         this.distributor=new ArrayList<String>();
         for (int i =0;i<res2.getJSONArray("production_companies").length();i++){
             this.distributor.add(res2.getJSONArray("production_companies").getJSONObject(i).getString("name"));
         }
         this.averageScore=(float)res2.getDouble("vote_average");
-        this.img="https://image.tmdb.org/t/p/w1280"+res2.getString("backdrop_path");
+        this.img="https://image.tmdb.org/t/p/w1280"+res2.getString("poster_path");
 
         /**Recupération des extraits**/
         HttpResponse<JsonNode> extract = Unirest.get("https://api.themoviedb.org/3/tv/"+this.id+"/videos?api_key="+key).asJson();

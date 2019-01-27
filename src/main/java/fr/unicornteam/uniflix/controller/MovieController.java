@@ -2,6 +2,7 @@ package fr.unicornteam.uniflix.controller;
 
 import fr.unicornteam.uniflix.model.Movie;
 import fr.unicornteam.uniflix.model.Search;
+import fr.unicornteam.uniflix.model.Serie;
 import fr.unicornteam.uniflix.model.Util;
 import fr.unicornteam.uniflix.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,20 @@ public class MovieController {
         for (Movie m : Util.allMovie()) {
             if (m.getId() == id) movie = m;
         }
-        if (movie == null) return "app";
+        if (movie == null) {
+            Serie show = null;
+            for (Serie s : Util.allSerie()) {
+                if (s.getId() == id) show = s;
+            }
+            if (show == null) return new AppController().index(model);
+            if (show.getExtract() == null || show.getExtract().size() == 0) {
+                ArrayList<String> ex = new ArrayList<>();
+                ex.add("No extract available for this title...");
+                show.setExtract(ex);
+            }
+            model.addAttribute("movie", show);
+            return "movie";
+        }
         if (movie.getExtract() == null || movie.getExtract().size() == 0) {
             ArrayList<String> ex = new ArrayList<>();
             ex.add("No extract available for this title...");

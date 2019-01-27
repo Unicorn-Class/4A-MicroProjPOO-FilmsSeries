@@ -56,7 +56,7 @@ public class UtilNico {
 
         Util.allMovie = InsertNico.initMovie();
         //Util.allMovie = InsertNico.initOldMovie();
-//        Util.allSerie = InsertNico.initSerie();
+        Util.allSerie = InsertNico.initSerie();
 //        ArrayList<User> allUser = InsertNico.initUser(Util.allMedia());
 
         System.out.println("===========");

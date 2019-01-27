@@ -200,8 +200,12 @@ public class InsertNico {
 
         ArrayList<Serie> allSerie = new ArrayList<>();
 
+
+
         try {
-            allSerie.add(new Serie("Breaking bad"));
+            Thread.sleep(10000);
+            allSerie.add(new Serie("Lucifer"));
+            allSerie.add(new Serie("The Good Place"));
             allSerie.add(new Serie("You"));
             allSerie.add(new Serie("Walking dead"));
             allSerie.add(new Serie("Westworld"));
@@ -209,8 +213,10 @@ public class InsertNico {
             e.printStackTrace();
         } catch (UnirestException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-return allSerie;
+        return allSerie;
 
     }
 

@@ -19,7 +19,7 @@ public class DiscoverController {
     public String discover(Model model) {
         model.addAttribute("searchString", new Search());
         model.addAttribute("movies", Util.allMovie());
-        model.addAttribute("shows", Util.AllSerie());
+        model.addAttribute("shows", Util.allSerie());
         return "discover";
     }
 }

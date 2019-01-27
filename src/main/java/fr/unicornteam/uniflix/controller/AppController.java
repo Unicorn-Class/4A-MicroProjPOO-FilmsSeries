@@ -25,7 +25,7 @@ public class AppController {
     public String index(Model model) {
         model.addAttribute("searchString", new Search());
         model.addAttribute("newMovies", Util.allMovie());
-        model.addAttribute("newSeries", Util.allMovie());
+        model.addAttribute("newSeries", Util.allSerie());
         model.addAttribute("recommended", Util.allMovie());
         System.out.println("Util.allMedia().size() = " + Util.allMedia().size());
         return "app";

@@ -67,7 +67,7 @@ public final class Util {
         return allMovie;
     }
 
-    public static ArrayList<Serie> AllSerie(){
+    public static ArrayList<Serie> allSerie(){
         return allSerie;
     }
 
