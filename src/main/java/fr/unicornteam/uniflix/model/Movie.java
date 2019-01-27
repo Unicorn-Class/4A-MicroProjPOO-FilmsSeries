@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Entity
 public class Movie extends Media {
@@ -157,6 +158,86 @@ public class Movie extends Media {
             for (int i = 0; i < res3.getJSONArray("results").length(); i++) {
                 this.extract.add(res3.getJSONArray("results").getJSONObject(i).getString("key"));
             }
+    }
+
+    public Movie(Integer id) {
+        System.out.println("Fetching API Infos for movie : "+id);
+        this.id = id;
+        String key="8600861f4787df9fb2f5752da938b459";
+        /**Get additionnal information**/
+        try {
+            HttpResponse<JsonNode> additionnal = Unirest.get("https://api.themoviedb.org/3/movie/"+this.id+"?api_key="+key).asJson();
+            System.out.println("API Response For Common Infos : "+additionnal.getStatus());
+            JSONObject res2 = additionnal.getBody().getObject();
+            this.title=res2.optString("original_title");
+            String date=res2.optString("release_date","1900-01-01");
+            try {
+                this.release=new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            } catch (ParseException e) {
+                System.err.println("Error while parsing date for "+id);
+                e.printStackTrace();
+                this.release=new Date();
+            }
+            this.overview=res2.optString("overview");
+
+            ArrayList<String> t=new ArrayList<String>();
+            for (int i =0;i<res2.getJSONArray("genres").length();i++){
+                t.add(res2.getJSONArray("genres").getJSONObject(i).optString("name"));
+            }
+
+            this.setType(t);
+            //System.out.println("Ok 1 ?");
+            //this.origin_country=res2.getJSONArray("production_countries").getJSONObject(0).optString("name");
+            System.out.println("Ok 2 ?");
+            this.averageScore=(float)res2.optDouble("vote_average");
+            System.out.println("Ok 3 ?");
+            if (res2.optString("poster_path", "img/unknown.png").equals("img/unknown.png")) this.img = "img/unknown.png";
+            else this.img="https://image.tmdb.org/t/p/w1280"+res2.optString("poster_path");
+
+
+            HttpResponse<JsonNode> ensemble=Unirest.get("https://api.themoviedb.org/3/movie/"+this.id+"/credits?api_key="+key).asJson();
+            System.out.println("API Response For Ensemble : "+ensemble.getStatus());
+            JSONObject ens=ensemble.getBody().getObject();
+
+            ArrayList<String> act=new ArrayList<String>();
+            for(int i=0;i<ens.getJSONArray("cast").length();i++){
+                act.add(ens.getJSONArray("cast").getJSONObject(i).optString("name"));
+            }
+
+            this.setActor(act);
+
+            this.scenarist=new ArrayList<String>();
+            this.director=new ArrayList<String>();
+
+            for (int i =0;i<ens.getJSONArray("crew").length();i++) {
+                String job = ens.getJSONArray("crew").getJSONObject(i).optString("job");
+                String member = ens.getJSONArray("crew").getJSONObject(i).optString("name");
+                if(job.equalsIgnoreCase("Director")){
+                    this.director.add(member);
+                }
+                else if(job.equalsIgnoreCase("Writer")){
+                    this.scenarist.add(member);
+                }
+            }
+            this.distributor=new ArrayList<String>();
+            for (int i =0;i<res2.getJSONArray("production_companies").length();i++){
+                this.distributor.add(res2.getJSONArray("production_companies").getJSONObject(i).optString("name"));
+            }
+            /**Recupération des extraits**/
+            HttpResponse<JsonNode> extract = Unirest.get("https://api.themoviedb.org/3/movie/" + this.id + "/videos?api_key=" + key).asJson();
+            System.out.println("API Response For Trailers : "+extract.getStatus());
+            JSONObject res3 = extract.getBody().getObject();
+            this.extract = new ArrayList<String>();
+
+            for (int i = 0; i < res3.getJSONArray("results").length(); i++) {
+                this.extract.add(res3.getJSONArray("results").getJSONObject(i).optString("key"));
+            }
+            System.out.println("Fin de l'ajout du film !");
+        } catch (UnirestException e) {
+            System.err.println("Error while getting result of API request for "+id);
+            e.printStackTrace();
+        }
+
     }
 
 

@@ -237,6 +237,7 @@ iframe {
 }
 
 #playBtn:hover {
+    cursor: pointer;
     font-size: 4.5em;
     background-color: #4472C4;
 }

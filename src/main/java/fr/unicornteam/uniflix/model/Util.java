@@ -31,6 +31,7 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import static fr.unicornteam.uniflix.UtilAxel.Search.search;
 
 
 public final class Util {
@@ -70,17 +71,20 @@ public final class Util {
         return allSerie;
     }
 
-    public static ArrayList<Media> research(String str){
+    public static ArrayList<Media> research(String str) {
         ArrayList<Media> liste = new ArrayList<>();
         if(searchInBDD(str).size()==0){
-            System.out.println("Ajout");
             try {
-                Movie m = new Movie(str);
-                liste.add(m);
-                addMovie(m);
+                ArrayList<Integer> ids = search(str);
+                System.out.println("Ajout de "+ids.size()+" films...");
+                for (int i = 0; i < ids.size(); i++) {
+                    Movie m = new Movie(ids.get(i));
+                    addMovie(m);
+                    liste.add(m);
+                    System.out.println("Film "+i+"/"+ids.size()+" ajouté...");
+                }
+                System.out.println("Returning "+liste.size()+" movies !");
                 return liste;
-            } catch (ParseException e) {
-                e.printStackTrace();
             } catch (UnirestException e) {
                 e.printStackTrace();
             }
@@ -93,7 +97,7 @@ public final class Util {
 
     private static void addMovie(Movie m) {
         try {
-            notifFB2(m);
+            //notifFB2(m);
         } catch (Exception e) {
             e.printStackTrace();
         }
