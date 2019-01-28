@@ -30,7 +30,7 @@ public class Serie extends Media {
                 ", seasonList=" + seasonList +
                 ", title='" + title + '\'' +
                 ", img='" + img + '\'' +
-                ", release=" + release +
+                ", release=" + releaseDate +
                 ", scenarist=" + scenarist +
                 ", duration=" + duration +
                 ", director=" + director +
@@ -39,7 +39,7 @@ public class Serie extends Media {
                 ", language=" + language +
                 ", universe=" + universe +
                 ", collection=" + collection +
-                ", group=" + group +
+                ", group=" + groupMedia +
                 ", origin_country='" + origin_country + '\'' +
                 ", overview='" + overview + '\'' +
                 ", averageScore=" + averageScore +
@@ -67,7 +67,7 @@ public class Serie extends Media {
         this.id=res.getJSONObject(0).getInt("id");
         this.title=res.getJSONObject(0).getString("name");
         String date=res.getJSONObject(0).getString("first_air_date");
-        this.release=new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        this.releaseDate=new SimpleDateFormat("yyyy-MM-dd").parse(date);
         System.out.println(res.getJSONObject(0).get("origin_country"));
         this.origin_country=res.getJSONObject(0).getJSONArray("origin_country").getString(0);
         this.overview=res.getJSONObject(0).getString("overview");

@@ -76,7 +76,7 @@ public class Movie extends Media {
                 ", listeMovie=" + listeMovie +
                 ", title='" + title + '\'' +
                 ", img='" + img + '\'' +
-                ", release=" + release +
+                ", release=" + releaseDate +
                 ", scenarist=" + scenarist +
                 ", duration=" + duration +
                 ", director=" + director +
@@ -85,7 +85,7 @@ public class Movie extends Media {
                 ", language=" + language +
                 ", universe=" + universe +
                 ", collection=" + collection +
-                ", group=" + group +
+                ", group=" + groupMedia +
                 ", origin_country='" + origin_country + '\'' +
                 ", overview='" + overview + '\'' +
                 ", averageScore=" + averageScore +
@@ -105,7 +105,7 @@ public class Movie extends Media {
         this.id=rs.getJSONObject(0).getInt("id");
         this.title=rs.getJSONObject(0).getString("original_title");
         String date=rs.getJSONObject(0).getString("release_date");
-        this.release=new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        this.releaseDate=new SimpleDateFormat("yyyy-MM-dd").parse(date);
         this.overview=rs.getJSONObject(0).getString("overview");
 
         /**Get additionnal information**/
@@ -177,11 +177,11 @@ public class Movie extends Media {
             this.title=res2.optString("original_title");
             String date=res2.optString("release_date","1900-01-01");
             try {
-                this.release=new SimpleDateFormat("yyyy-MM-dd").parse(date);
+                this.releaseDate=new SimpleDateFormat("yyyy-MM-dd").parse(date);
             } catch (ParseException e) {
                 System.err.println("Error while parsing date for "+id);
                 e.printStackTrace();
-                this.release=new Date();
+                this.releaseDate=new Date();
             }
             this.overview=res2.optString("overview");
 
@@ -263,7 +263,7 @@ public class Movie extends Media {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
             System.out.println(s);
-            String sql = "INSERT INTO movie (title, release_date, overview, image, country) VALUES ('"+s.title+"','"+s.release+"','"+s.overview+"','"+s.img+"','"+s.origin_country+"')";
+            String sql = "INSERT INTO movie (title, release_date, overview, image, country) VALUES ('"+s.title+"','"+s.releaseDate+"','"+s.overview+"','"+s.img+"','"+s.origin_country+"')";
             System.out.println("sql = " + sql);
             stmt.executeUpdate(sql);
         } catch (UnirestException e) {

@@ -37,7 +37,7 @@ public class Season extends Media {
                 "id=" + id +
                 ", episodeList=" + episodeList +
                 ", title='" + title + '\'' +
-                ", release=" + release +
+                ", release=" + releaseDate +
                 ", scenarist=" + scenarist +
                 ", duration=" + duration +
                 ", director=" + director +
@@ -46,7 +46,7 @@ public class Season extends Media {
                 ", language=" + language +
                 ", universe=" + universe +
                 ", collection=" + collection +
-                ", group=" + group +
+                ", group=" + groupMedia +
                 ", origin_country='" + origin_country + '\'' +
                 ", overview='" + overview + '\'' +
                 ", averageScore=" + averageScore +
@@ -62,7 +62,7 @@ public class Season extends Media {
         JSONObject res =response.getBody().getObject();
         this.id=res.getInt("id");
         String date=res.getString("air_date");
-        this.release=new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        this.releaseDate=new SimpleDateFormat("yyyy-MM-dd").parse(date);
         this.title=res.getString("name");
         this.overview=res.getString("overview");
 

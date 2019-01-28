@@ -17,7 +17,7 @@ public abstract class Media extends CommonForUserMedia {
     int id;
     String title;
     String img;
-    Date release;
+    Date releaseDate;
     ArrayList<String> scenarist = new ArrayList<>();
     Time duration;
     ArrayList<String> director = new ArrayList<>();
@@ -26,7 +26,7 @@ public abstract class Media extends CommonForUserMedia {
     ArrayList<String> language = new ArrayList<>();
     ArrayList<Media> universe = new ArrayList<>();
     ArrayList<Media> collection = new ArrayList<>();
-    ArrayList<Media> group = new ArrayList<>();
+    ArrayList<Media> groupMedia = new ArrayList<>();
     String origin_country;
     String overview;
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -71,11 +71,11 @@ public abstract class Media extends CommonForUserMedia {
     }
 
     public Date getRelease() {
-        return release;
+        return releaseDate;
     }
 
     public void setRelease(Date release) {
-        this.release = release;
+        this.releaseDate = release;
     }
 
     public Time getDuration() {
@@ -159,15 +159,15 @@ public abstract class Media extends CommonForUserMedia {
     }
 
     public List<Media> getGroup() {
-        return group;
+        return groupMedia;
     }
 
     public void setGroup(ArrayList<Media> group) {
-        this.group = group;
+        this.groupMedia = group;
     }
 
     public void addGroup(Media group) {
-        this.group.add(group);
+        this.groupMedia.add(group);
     }
 
     public String getImg() {
